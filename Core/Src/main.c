@@ -55,10 +55,10 @@ __IO uint16_t array[BUFFER_SIZE];			//Tu cu spremati digitalizirani signal iz bu
 __IO uint16_t filteredArray[BUFFER_SIZE];	//Tu cu spremati isfiltrirani signal
 __IO float firCoef_HP[BUFFER_SIZE + 1];		//Polje za koeficijente visokopropusnog filtra
 __IO float firCoef_LP[BUFFER_SIZE];			//Polje za koeficijente niskopropusnog filtra
-_Bool filterType = 0;						//Varijabla za odabir vrste filtra (1->HP, 0->LP), Stavio sam zasad u 0 da se koristi niski filtar za testiranje
-double cutOffFreq;							//Varijabla u kojoj je spremljena granicna frekvencija
+__IO _Bool filterType;						//Varijabla za odabir vrste filtra (1->HP, 0->LP)
+__IO double cutOffFreq;						//Varijabla u kojoj je spremljena granicna frekvencija
 __IO uint16_t filteredArray_int[BUFFER_SIZE];
-int arrayInt[BUFFER_SIZE];
+__IO int arrayInt[BUFFER_SIZE];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -280,7 +280,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 
 		if(filterType == 1) {								//filterType = 1 -> HP
 			for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
-				for(int k = 0; k < BUFFER_SIZE + 1; ++k) {		//N = L - 1 = BUFFER_SIZE - 1
+				for(int k = 0; k < BUFFER_SIZE + 1; ++k) {	//N = L - 1 = BUFFER_SIZE - 1
 					if(n - k >= 0)
 						sum += firCoef_HP[k] * array[n-k];
 				}
