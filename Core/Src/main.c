@@ -35,6 +35,9 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define BUFFER_SIZE 64
+#define FS_INT		4095.0f
+#define	FS_INT_HALF	2047
+#define AMP 		1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,6 +57,8 @@ __IO float firCoef_HP[BUFFER_SIZE + 1];		//Polje za koeficijente visokopropusnog
 __IO float firCoef_LP[BUFFER_SIZE];			//Polje za koeficijente niskopropusnog filtra
 _Bool filterType = 0;						//Varijabla za odabir vrste filtra (1->HP, 0->LP), Stavio sam zasad u 0 da se koristi niski filtar za testiranje
 double cutOffFreq;							//Varijabla u kojoj je spremljena granicna frekvencija
+__IO uint16_t filteredArray_int[BUFFER_SIZE];
+int arrayInt[BUFFER_SIZE];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -114,7 +119,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  if(cutOffFreq == 0.1) {
-	    	 	 copy_LP(firCoef_LP, firCoef_LP_01);
+	    	 copy_LP(firCoef_LP, firCoef_LP_01);
 	    	 copy_HP(firCoef_HP, firCoef_HP_01);
 	       } else if(cutOffFreq == 0.2) {
 	         copy_LP(firCoef_LP, firCoef_LP_02);
@@ -266,34 +271,35 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
-	for(int i = 0; i < BUFFER_SIZE; ++i)
-		array[i] = buffer[i];
-
-	float sum = 0;
-
-	if(filterType = 1) {								//filterType = 1 -> HP
-		for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
-			for(int k = 0; k < BUFFER_SIZE + 1; ++k) {		//N = L - 1 = BUFFER_SIZE - 1
-				if(n - k >= 0)
-					sum += firCoef_HP[k] * array[n-k];
-				else
-					sum += 0;
-			}
-			filteredArray[n] = sum;
-			sum = 0;
+	for(int i = 0; i < BUFFER_SIZE; ++i) {
+			array[i] = -AMP + (float)buffer[i]/FS_INT * 2;
+			arrayInt[i] = buffer[i];
 		}
-	} else {											//filterType = 0 -> LP
-		for(int n = 0; n < BUFFER_SIZE; ++n) {
-			for(int k = 0; k < BUFFER_SIZE; ++k) {
-				if(n - k >= 0)
-					sum += firCoef_LP[k] * array[n-k];
-				else
-					sum += 0;
+
+		float sum = 0;
+
+		if(filterType == 1) {								//filterType = 1 -> HP
+			for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
+				for(int k = 0; k < BUFFER_SIZE + 1; ++k) {		//N = L - 1 = BUFFER_SIZE - 1
+					if(n - k >= 0)
+						sum += firCoef_HP[k] * array[n-k];
+				}
+				filteredArray[n] = sum;
+				sum = 0;
 			}
-			filteredArray[n] = sum;
-			sum = 0;
+		} else {											//filterType = 0 -> LP
+			for(int n = 0; n < BUFFER_SIZE; ++n) {
+				for(int k = 0; k < BUFFER_SIZE; ++k) {
+					if(n - k >= 0)
+						sum += firCoef_LP[k] * array[n-k];
+				}
+				filteredArray[n] = sum;
+				sum = 0;
+			}
 		}
-	}
+		for(int i=0; i<BUFFER_SIZE; i++) {
+			filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
+		}
 }
 
 void copy_LP(volatile float* array1, float *array2) {
