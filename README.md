@@ -1,2 +1,2 @@
 # SGAPS
-Sustav za Generiranje, Akviziciju i Prikaz Signala temeljen na STM32F429 platformi
+Kod za ADC i digitlano filtriranje signala s ADC-a. Varijable filterType (_Bool) i cutOffFreq (double) postavlja korisnik Wi-Fi putem. 
