@@ -38,8 +38,8 @@
 /* USER CODE BEGIN PD */
 #define 	PI			3.14159265359
 #define		SAMPLES		100
-#define		U_REF		3.04		//nezz zašto, trebalo bi bit 3.3;
-#define		SINUS		1
+#define		U_REF		3.04
+#define		SINE		1
 #define		SQUARED		0
 /* USER CODE END PD */
 
@@ -115,7 +115,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
 
   if (generira) {
-	  if (valni_oblik == SINUS) {
+	  if (valni_oblik == SINE) {
 		  racunaj_sinus(amp);
 		  MX_TIM6_Freq_Init(freq);
 		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
@@ -341,7 +341,7 @@ void racunaj_sinus(float amp)
 {
 	for (int i = 0; i < SAMPLES; i++)
 	{
-		signal[i] = (amp/U_REF)*(sin(i*2*PI/SAMPLES) + 1) * (0xFFF)/4;
+		signal[i] = (amp/U_REF)*(sin(i*2*PI/SAMPLES) + 1) * (0xFFF)/2;
 	}
 }
 
@@ -351,7 +351,7 @@ void racunaj_pravokutni(float amp)
 	{
 		if (i < SAMPLES/2)
 		{
-			signal[i] = (amp/2)*0xFFF/U_REF;
+			signal[i] = amp*0xFFF/U_REF;
 		} else
 		{
 			signal[i] = 0;
