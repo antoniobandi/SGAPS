@@ -1,0 +1,11 @@
+tm_stm32_exti.c:28:18:TM_EXTI_Attach	40	static
+tm_stm32_exti.c:184:18:TM_EXTI_Detach	16	static
+tm_stm32_exti.c:197:6:TM_EXTI_DeInit	4	static
+tm_stm32_exti.c:206:13:TM_EXTI_Handler	16	static
+tm_stm32_exti.c:219:6:EXTI0_IRQHandler	8	static
+tm_stm32_exti.c:231:6:EXTI1_IRQHandler	8	static
+tm_stm32_exti.c:243:6:EXTI2_IRQHandler	8	static
+tm_stm32_exti.c:255:6:EXTI3_IRQHandler	8	static
+tm_stm32_exti.c:267:6:EXTI4_IRQHandler	8	static
+tm_stm32_exti.c:279:6:EXTI9_5_IRQHandler	8	static
+tm_stm32_exti.c:319:6:EXTI15_10_IRQHandler	8	static

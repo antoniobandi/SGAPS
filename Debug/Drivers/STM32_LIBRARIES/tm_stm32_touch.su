@@ -1,0 +1,2 @@
+tm_stm32_touch.c:40:19:TM_TOUCH_Init	16	static
+tm_stm32_touch.c:72:9:TM_TOUCH_Read	24	static

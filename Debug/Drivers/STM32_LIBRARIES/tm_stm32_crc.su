@@ -1,0 +1,5 @@
+tm_stm32_crc.c:28:6:TM_CRC_Init	16	static
+tm_stm32_crc.c:33:6:TM_CRC_DeInit	4	static
+tm_stm32_crc.c:38:10:TM_CRC_Calculate8	32	static
+tm_stm32_crc.c:72:10:TM_CRC_Calculate16	32	static
+tm_stm32_crc.c:106:10:TM_CRC_Calculate32	24	static

@@ -1,0 +1,13 @@
+tm_stm32_buffer.c:28:9:TM_BUFFER_Init	24	static
+tm_stm32_buffer.c:62:6:TM_BUFFER_Free	16	static
+tm_stm32_buffer.c:79:10:TM_BUFFER_Write	40	static
+tm_stm32_buffer.c:169:10:TM_BUFFER_WriteToTop	40	static
+tm_stm32_buffer.c:225:10:TM_BUFFER_Read	40	static
+tm_stm32_buffer.c:315:10:TM_BUFFER_GetFree	32	static
+tm_stm32_buffer.c:346:10:TM_BUFFER_GetFull	32	static
+tm_stm32_buffer.c:378:6:TM_BUFFER_Reset	16	static
+tm_stm32_buffer.c:389:9:TM_BUFFER_FindElement	32	static
+tm_stm32_buffer.c:424:9:TM_BUFFER_Find	48	static
+tm_stm32_buffer.c:488:10:TM_BUFFER_WriteString	16	static
+tm_stm32_buffer.c:493:10:TM_BUFFER_ReadString	40	static
+tm_stm32_buffer.c:551:8:TM_BUFFER_CheckElement	40	static
