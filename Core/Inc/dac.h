@@ -37,8 +37,6 @@ extern DAC_HandleTypeDef hdac;
 #define 	PI			3.14159265359
 #define		SAMPLES		100
 #define		U_REF		3.04
-#define		SINE		1
-#define		SQUARED		0
 /* USER CODE END Private defines */
 
 void MX_DAC_Init(void);

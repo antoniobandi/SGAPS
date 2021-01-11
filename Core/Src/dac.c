@@ -31,15 +31,12 @@ void generate () {
 		  racunaj_sinus();
 		  MX_TIM6_Freq_Init();
 		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
-//		  SetSineOutput(frequency);
-	  } else if (!sinewave) {
+		  SetSineOutput(frequency);
+	  } else {
 		  racunaj_pravokutni();
 		  MX_TIM6_Freq_Init();
 		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
 		  SetSquareOutput(frequency);
-	  } else {
-		  //error
-	  }
   } else {
 	  HAL_DAC_Stop_DMA(&hdac, DAC_CHANNEL_2);
 	  LCDFunctionGeneratorOFF();
@@ -200,7 +197,7 @@ void racunaj_sinus()
 {
 	for (int i = 0; i < SAMPLES; i++)
 	{
-		signal[i] = (sin(i*2*PI/SAMPLES) + 1) * (0xFFF)/2;
+		signal[i] = (amplitude/U_REF)*(sin(i*2*PI/SAMPLES) + 1) * (0xFFF)/2;
 	}
 }
 
