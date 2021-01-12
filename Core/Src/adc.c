@@ -19,10 +19,15 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "adc.h"
-#include "fft.h"
+
 /* USER CODE BEGIN 0 */
 #include "firCoeffs.h"
 #include "signal_matlab.h"
+#include <complex.h>
+#include "fft.h"
+#include "usart.h"
+
+
 void cutOffSetup() {
 		if(cutOffFreq == 0.1) {
 	    	 copy_LP(firCoef_LP, firCoef_LP_01);
@@ -55,6 +60,7 @@ void cutOffSetup() {
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 1);
 	for(int i = 0; i < BUFFER_SIZE; ++i) {
 			array[i] = -amplitude + (float)buffer[i]/FS_INT * 2;
 			arrayInt[i] = buffer[i];
@@ -85,38 +91,40 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 			filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
 		}
 
-		if(!signal_q) {
+//		if(!signal_q) {
+//
+//			if(filtered){
+//				int spectrum_int[BUFFER_SIZE];
+//				float complex vector[BUFFER_SIZE];
+//				for (int k = 0; k < BUFFER_SIZE; k++){
+//					vector[k] = (float) filteredArray_int[k];
+//				}
+//				fft(vector, BUFFER_SIZE);
+//				for (int k = 0; k < BUFFER_SIZE; k++){
+//					spectrum_int[k] = (int) cabsf(vector[k]);
+//				}
+//				ShowSignal(spectrum_int, "SPECTRUM");
+//			} else {
+//				int spectrum_int[BUFFER_SIZE];
+//				float complex vector[BUFFER_SIZE];
+//				for (int k = 0; k < BUFFER_SIZE; k++){
+//					vector[k] = (float) arrayInt[k];
+//				}
+//				fft(vector, BUFFER_SIZE);
+//				for (int k = 0; k < BUFFER_SIZE; k++){
+//					spectrum_int[k] = (int) cabsf(vector[k]);
+//				}
+//				ShowSignal(spectrum_int, "SPECTRUM");
+//			}
+//		} else {
+//			if(filtered){
+//				ShowSignal(filteredArray_int, "SIGNAL");
+//			} else {
+//				ShowSignal(arrayInt, "SIGNAL");
+//			}
+//		}
+		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 0);
 
-			if(filtered){
-				int spectrum_int[BUFFER_SIZE];
-				float complex vector[BUFFER_SIZE];
-				for (int k = 0; k < BUFFER_SIZE; k++){
-					vector[k] = (float) filteredArray_int[k];
-				}
-				fft(vector, BUFFER_SIZE);
-				for (int k = 0; k < BUFFER_SIZE; k++){
-					spectrum_int[k] = (int) cabsf(vector[k]);
-				}
-				ShowSignal(spectrum_int, "SPECTRUM");
-			} else {
-				int spectrum_int[BUFFER_SIZE];
-				float complex vector[BUFFER_SIZE];
-				for (int k = 0; k < BUFFER_SIZE; k++){
-					vector[k] = (float) arrayInt[k];
-				}
-				fft(vector, BUFFER_SIZE);
-				for (int k = 0; k < BUFFER_SIZE; k++){
-					spectrum_int[k] = (int) cabsf(vector[k]);
-				}
-				ShowSignal(spectrum_int, "SPECTRUM");
-			}
-		} else {
-			if(filtered){
-				ShowSignal(filteredArray_int, "SIGNAL");
-			} else {
-				ShowSignal(arrayInt, "SIGNAL");
-			}
-		}
 }
 
 void copy_LP(volatile float* array1, float *array2) {
@@ -141,7 +149,7 @@ void MX_ADC3_Init(void)
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
   hadc3.Instance = ADC3;
-  hadc3.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
+  hadc3.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV8;
   hadc3.Init.Resolution = ADC_RESOLUTION_12B;
   hadc3.Init.ScanConvMode = DISABLE;
   hadc3.Init.ContinuousConvMode = ENABLE;

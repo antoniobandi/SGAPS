@@ -28,7 +28,7 @@ float i = 0;
 void matlab(void){
 
 	for (int k = 0; k < SEND_SIZE; k++){
-		USART1_SendChar('a');
+		USART1_SendInt((int) amplitude_temp);
 	}
 	USART1_SendChar('\r');
 	USART1_SendChar('\n');

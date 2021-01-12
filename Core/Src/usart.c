@@ -43,7 +43,7 @@ void MX_USART1_UART_Init(void)
   {
     Error_Handler();
   }
-  __HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);
+
 }
 
 void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)

@@ -22,14 +22,13 @@
 #include "adc.h"
 #include "dac.h"
 #include "dma.h"
-
+#include "dma2d.h"
 #include "ltdc.h"
-
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-
-
+#include "fmc.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -97,18 +96,21 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
+  MX_LTDC_Init();
+  MX_DMA2D_Init();
+  MX_FMC_Init();
+  MX_SPI1_Init();
   MX_ADC3_Init();
   MX_DAC_Init();
   MX_USART1_UART_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   start_timer();
-//  if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
-//    {
-//      /* Start Conversation Error */
-//      Error_Handler();
-//    }
-//  SetSineOutput(500);
+  if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
+    {
+      /* Start Conversation Error */
+      Error_Handler();
+    }
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -117,7 +119,7 @@ int main(void)
   {
 	  generate();
 
-	  //matlab();
+	  matlab();
 	  cutOffSetup();
 
 
@@ -170,7 +172,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV8;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
