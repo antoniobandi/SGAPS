@@ -25,10 +25,10 @@
 #include "signal_matlab.h"
 #include "ltdc.h"
 uint32_t signal[SAMPLES];
-float amplitude_check = AMP_S;
-long int frequency_check = FREQ_S;
-_Bool gen_check = GEN_S;
-_Bool sinewave_check = SINE_S;
+float amplitude_check;
+long int frequency_check;
+_Bool gen_check;
+_Bool sinewave_check;
 
 void generate () {
    if (amplitude_check != amplitude || frequency_check != frequency || gen_check != gen || sinewave_check != sinewave) {

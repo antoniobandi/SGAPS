@@ -90,27 +90,25 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  MX_SPI1_Init();
+  //MX_SPI1_Init();
   StartScreen();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-
-
   MX_ADC3_Init();
   MX_DAC_Init();
   MX_USART1_UART_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   start_timer();
-  if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
-    {
-      /* Start Conversation Error */
-      Error_Handler();
-    }
-  SetSineOutput(500);
+//  if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
+//    {
+//      /* Start Conversation Error */
+//      Error_Handler();
+//    }
+//  SetSineOutput(500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
