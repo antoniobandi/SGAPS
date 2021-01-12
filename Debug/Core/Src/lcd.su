@@ -1,0 +1,9 @@
+lcd.c:9:6:StartScreen	72	static
+lcd.c:54:6:ScreenIntro	128	static
+lcd.c:81:6:LCDFunctionGeneratorON	24	static
+lcd.c:98:6:LCDFunctionGeneratorOFF	56	static
+lcd.c:123:6:SendToScreen	32	static
+lcd.c:135:6:SetSquareOutput	240	static
+lcd.c:170:6:SetSineOutput	240	static
+lcd.c:206:6:ShowSignal	32	static
+lcd.c:230:6:Window	24	static

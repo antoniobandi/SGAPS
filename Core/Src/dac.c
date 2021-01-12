@@ -23,7 +23,7 @@
 /* USER CODE BEGIN 0 */
 #include "tim.h"
 #include "signal_matlab.h"
-#include "ltdc.h"
+#include "lcd.h"
 uint32_t signal[SAMPLES];
 float amplitude_check;
 long int frequency_check;

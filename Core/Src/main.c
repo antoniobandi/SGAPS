@@ -23,7 +23,6 @@
 #include "dac.h"
 #include "dma.h"
 #include "dma2d.h"
-#include "ltdc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -33,6 +32,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "signal_matlab.h"
+#include "lcd.h"
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,7 +97,6 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_LTDC_Init();
   MX_DMA2D_Init();
   MX_FMC_Init();
   MX_SPI1_Init();
@@ -111,18 +111,20 @@ int main(void)
       /* Start Conversation Error */
       Error_Handler();
     }
+
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+	  HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
 	  generate();
-
-	  matlab();
-	  cutOffSetup();
-
-
+//	  matlab();
+//	  cutOffSetup();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

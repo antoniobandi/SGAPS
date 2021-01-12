@@ -38,6 +38,7 @@ extern ADC_HandleTypeDef hadc3;
 /* USER CODE BEGIN Private defines */
 #define FS_INT		4095.0f
 #define	FS_INT_HALF	2047
+#define FILTER_ORDER 	32
 /* USER CODE END Private defines */
 
 void MX_ADC3_Init(void);
@@ -56,6 +57,7 @@ __IO float firCoef_LP[BUFFER_SIZE];			//Polje za koeficijente niskopropusnog fil
 //__IO double cutOffFreq;						//Varijabla u kojoj je spremljena granicna frekvencija
 __IO uint16_t filteredArray_int[BUFFER_SIZE];
 __IO int arrayInt[BUFFER_SIZE];
+__IO float arrayFormer[BUFFER_SIZE];
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

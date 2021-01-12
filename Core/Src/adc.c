@@ -62,34 +62,38 @@ void cutOffSetup() {
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 1);
 	for(int i = 0; i < BUFFER_SIZE; ++i) {
-			array[i] = -amplitude + (float)buffer[i]/FS_INT * 2;
-			arrayInt[i] = buffer[i];
-		}
+				array[i] = -AMP + (float)buffer[i]/FS_INT * 2;
+				arrayInt[i] = buffer[i];
+			}
 
 		float sum = 0;
 
 		if(!lowpass) {										//!lowpass= 1 -> HP
-			for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
-				for(int k = 0; k < BUFFER_SIZE + 1; ++k) {	//N = L - 1 = BUFFER_SIZE - 1
+			for(int n = 0; n < BUFFER_SIZE; ++n) {
+				for(int k = 0; k < FILTER_ORDER; ++k) {
 					if(n - k >= 0)
-						sum += firCoef_HP[k] * array[n-k];
+						sum += firCoef_LP[k] * array[n-k];
+					else
+						sum += firCoef_LP[k] * arrayFormer[BUFFER_SIZE + n - k + 1];
 				}
 				filteredArray[n] = sum;
 				sum = 0;
 			}
 		} else {											//!lowpass = 0 -> LP
-			for(int n = 0; n < BUFFER_SIZE; ++n) {
-				for(int k = 0; k < BUFFER_SIZE; ++k) {
+			for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
+				for(int k = 0; k < FILTER_ORDER; ++k) {	//N = L - 1 = BUFFER_SIZE - 1
 					if(n - k >= 0)
-						sum += firCoef_LP[k] * array[n-k];
+						sum += firCoef_HP[k] * array[n-k];
+					else
+						sum += firCoef_HP[k] * arrayFormer[BUFFER_SIZE + n - k + 1];
 				}
 				filteredArray[n] = sum;
 				sum = 0;
+		}
+			for(int i = 0; i < BUFFER_SIZE; i++) {
+				filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
+				arrayFormer[i] = array[i];
 			}
-		}
-		for(int i=0; i<BUFFER_SIZE; i++) {
-			filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
-		}
 
 //		if(!signal_q) {
 //
@@ -120,7 +124,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 //			if(filtered){
 //				ShowSignal(filteredArray_int, "SIGNAL");
 //			} else {
-//				ShowSignal(arrayInt, "SIGNAL");
+				ShowSignal(arrayInt, "SIGNAL");
 //			}
 //		}
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 0);
@@ -173,6 +177,12 @@ void MX_ADC3_Init(void)
   {
     Error_Handler();
   }
+
+  /* USER CODE BEGIN ADC3_Init 1 */
+  for(int i = 0; i < BUFFER_SIZE; ++i){
+	  arrayFormer[i] = array[i];
+  }
+   /* USER CODE END ADC3_Init 1 */
 
 }
 
