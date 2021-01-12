@@ -60,9 +60,10 @@ void cutOffSetup() {
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
+
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 1);
 	for(int i = 0; i < BUFFER_SIZE; ++i) {
-				array[i] = -AMP + (float)buffer[i]/FS_INT * 2;
+				array[i] = -amplitude + (float)buffer[i]/FS_INT * 2;
 				arrayInt[i] = buffer[i];
 			}
 
@@ -89,11 +90,13 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 				}
 				filteredArray[n] = sum;
 				sum = 0;
+			}
 		}
 			for(int i = 0; i < BUFFER_SIZE; i++) {
 				filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
 				arrayFormer[i] = array[i];
 			}
+			for(int i = 0; )
 
 //		if(!signal_q) {
 //
@@ -124,10 +127,11 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 //			if(filtered){
 //				ShowSignal(filteredArray_int, "SIGNAL");
 //			} else {
-				ShowSignal(arrayInt, "SIGNAL");
+//				ShowSignal(arrayInt, "SIGNAL");
 //			}
 //		}
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 0);
+
 
 }
 

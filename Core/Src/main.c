@@ -105,6 +105,12 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
+  int a[A_SIZE];
+  int a_filtered[a_SIZE];
+  int HEAD = 0;
+  int TAIL= 0;
+  int HEAD_filtered=0;
+  int TAIL_filtered=0;
   start_timer();
   if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
     {
@@ -121,7 +127,7 @@ int main(void)
   while (1)
   {
 
-	  HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
+
 	  generate();
 //	  matlab();
 //	  cutOffSetup();

@@ -61,6 +61,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 /* USER CODE BEGIN Private defines */
 #define BUFFER_SIZE 64
+#define A_SIZE 10000
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
