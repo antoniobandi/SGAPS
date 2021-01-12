@@ -23,24 +23,36 @@
 /* USER CODE BEGIN 0 */
 #include "tim.h"
 #include "signal_matlab.h"
+#include "ltdc.h"
 uint32_t signal[SAMPLES];
+float amplitude_check = AMP_S;
+long int frequency_check = FREQ_S;
+_Bool gen_check = GEN_S;
+_Bool sinewave_check = SINE_S;
 
 void generate () {
-  if (gen) {
-	  if (sinewave) {
-		  racunaj_sinus();
-		  MX_TIM6_Freq_Init();
-		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
-		  SetSineOutput(frequency);
+   if (amplitude_check != amplitude || frequency_check != frequency || gen_check != gen || sinewave_check != sinewave) {
+	  if (gen) {
+		  if (sinewave) {
+			  racunaj_sinus();
+			  MX_TIM6_Freq_Init();
+			  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
+			  SetSineOutput(frequency);
+		  } else {
+			  racunaj_pravokutni();
+			  MX_TIM6_Freq_Init();
+			  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
+			  SetSquareOutput(frequency);
+		  }
 	  } else {
-		  racunaj_pravokutni();
-		  MX_TIM6_Freq_Init();
-		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, signal, SAMPLES,DAC_ALIGN_12B_R);
-		  SetSquareOutput(frequency);
-  } else {
-	  HAL_DAC_Stop_DMA(&hdac, DAC_CHANNEL_2);
-	  LCDFunctionGeneratorOFF();
-  }
+		  HAL_DAC_Stop_DMA(&hdac, DAC_CHANNEL_2);
+		  LCDFunctionGeneratorOFF();
+	  }
+	  amplitude_check = amplitude;
+	  frequency_check = frequency;
+	  gen_check = gen;
+	  sinewave_check = sinewave;
+   }
 }
 
 /* USER CODE END 0 */

@@ -1,7 +1,7 @@
-dac.c:28:6:generate	16	static
-dac.c:55:6:MX_DAC_Init	16	static
-dac.c:77:6:HAL_DAC_MspInit	48	static
-dac.c:126:6:HAL_DAC_MspDeInit	16	static
-dac.c:161:6:MX_TIM6_Freq_Init	16	static
-dac.c:199:6:racunaj_sinus	24	static
-dac.c:207:6:racunaj_pravokutni	24	static
+dac.c:33:6:generate	16	static
+dac.c:64:6:MX_DAC_Init	16	static
+dac.c:86:6:HAL_DAC_MspInit	48	static
+dac.c:135:6:HAL_DAC_MspDeInit	16	static
+dac.c:170:6:MX_TIM6_Freq_Init	16	static
+dac.c:208:6:racunaj_sinus	24	static
+dac.c:216:6:racunaj_pravokutni	24	static

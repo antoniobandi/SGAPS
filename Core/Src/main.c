@@ -90,8 +90,8 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-//  MX_SPI1_Init();
-//  StartScreen();
+  MX_SPI1_Init();
+  StartScreen();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -110,7 +110,6 @@ int main(void)
       /* Start Conversation Error */
       Error_Handler();
     }
-  generate();
   SetSineOutput(500);
   /* USER CODE END 2 */
 
@@ -118,7 +117,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+	  generate();
 
 	  //matlab();
 	  cutOffSetup();
