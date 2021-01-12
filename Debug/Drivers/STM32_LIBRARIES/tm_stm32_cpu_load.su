@@ -1,2 +1,0 @@
-tm_stm32_cpu_load.c:28:9:TM_CPULOAD_Init	16	static
-tm_stm32_cpu_load.c:39:9:TM_CPULOAD_GoToSleepMode	40	static,ignoring_inline_asm

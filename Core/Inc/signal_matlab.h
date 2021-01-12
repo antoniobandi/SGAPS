@@ -9,7 +9,7 @@
 #define SIG_S	true
 #define FIL_S	false
 #define LOWPASS_S	true
-#define AMP_TEMP	2000
+#define AMP_TEMP	2048
 #define AMP_S	1.00
 #define FREQ_S	500
 #define FGFREQ_S	0.5

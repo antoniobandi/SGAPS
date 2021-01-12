@@ -1,5 +1,0 @@
-core_cm4.h:1724:22:__NVIC_DisableIRQ	16	static,ignoring_inline_asm
-tm_stm32_pvd.c:28:6:TM_PVD_Enable	32	static
-tm_stm32_pvd.c:51:6:TM_PVD_Disable	8	static
-tm_stm32_pvd.c:65:13:TM_PVD_Handler	16	static
-tm_stm32_pvd.c:74:6:PVD_IRQHandler	8	static

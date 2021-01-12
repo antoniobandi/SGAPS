@@ -1,7 +1,0 @@
-fft.c:6:12:ctz	24	static
-fft.c:18:13:nop_split	32	static
-fft.c:26:13:fft_split	96	static
-fft.c:34:15:revbits	24	static
-fft.c:45:12:nop_reverse	40	static
-fft.c:60:12:fft_reverse	48	static
-fft.c:76:5:fft	32	static

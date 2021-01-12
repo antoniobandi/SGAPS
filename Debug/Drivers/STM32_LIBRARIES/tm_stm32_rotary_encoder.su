@@ -1,4 +1,0 @@
-tm_stm32_rotary_encoder.c:31:6:TM_RE_Init	32	static
-tm_stm32_rotary_encoder.c:54:16:TM_RE_Get	16	static
-tm_stm32_rotary_encoder.c:69:6:TM_RE_SetMode	16	static
-tm_stm32_rotary_encoder.c:74:6:TM_RE_Process	24	static
