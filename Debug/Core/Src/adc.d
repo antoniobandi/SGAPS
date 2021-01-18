@@ -39,7 +39,19 @@ Core/Src/adc.o: ../Core/Src/adc.c ../Core/Inc/adc.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/stm32f4xx_hal_conf.h ../Core/Inc/stm32f4xx_it.h \
  ../Core/Inc/firCoeffs.h ../Core/Inc/signal_matlab.h ../Core/Inc/fft.h \
- ../Core/Inc/usart.h
+ ../Core/Inc/usart.h ../Core/Inc/lcd.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/defines.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_disco.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/stm32fxxx_hal.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/defines.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_rcc.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_gpio.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_delay.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_lcd.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_sdram.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/attributes.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_fonts.h \
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_dma2d_graphic.h
 
 ../Core/Inc/adc.h:
 
@@ -132,3 +144,29 @@ Core/Src/adc.o: ../Core/Src/adc.c ../Core/Inc/adc.h ../Core/Inc/main.h \
 ../Core/Inc/fft.h:
 
 ../Core/Inc/usart.h:
+
+../Core/Inc/lcd.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/defines.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_disco.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/stm32fxxx_hal.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/defines.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_rcc.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_gpio.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_delay.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_lcd.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_sdram.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/attributes.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_fonts.h:
+
+/home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_dma2d_graphic.h:

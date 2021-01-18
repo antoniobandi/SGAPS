@@ -50,12 +50,12 @@ void copy_HP(volatile float* array1, float *array2);
 
 __IO uint16_t buffer[BUFFER_SIZE];			//Tu cu spremati digitalizirani signal iz ADC-a
 __IO float array[BUFFER_SIZE];			//Tu cu spremati digitalizirani signal iz buffera spreman za filtriranje
-__IO uint16_t filteredArray[BUFFER_SIZE];	//Tu cu spremati isfiltrirani signal
+__IO float filteredArray[BUFFER_SIZE];	//Tu cu spremati isfiltrirani signal
 __IO float firCoef_HP[BUFFER_SIZE + 1];		//Polje za koeficijente visokopropusnog filtra
 __IO float firCoef_LP[BUFFER_SIZE];			//Polje za koeficijente niskopropusnog filtra
 //__IO _Bool filterType;						//Varijabla za odabir vrste filtra (1->HP, 0->LP)
 //__IO double cutOffFreq;						//Varijabla u kojoj je spremljena granicna frekvencija
-__IO uint16_t filteredArray_int[BUFFER_SIZE];
+__IO int filteredArray_int[BUFFER_SIZE];
 __IO int arrayInt[BUFFER_SIZE];
 __IO float arrayFormer[BUFFER_SIZE];
 /* USER CODE END Prototypes */

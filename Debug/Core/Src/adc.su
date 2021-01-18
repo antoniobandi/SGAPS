@@ -1,7 +1,7 @@
-adc.c:31:6:cutOffSetup	8	static
-adc.c:62:6:HAL_ADC_ConvCpltCallback	3928	static
-adc.c:145:6:copy_LP	24	static
-adc.c:150:6:copy_HP	24	static
-adc.c:160:6:MX_ADC3_Init	32	static
-adc.c:200:6:HAL_ADC_MspInit	48	static
-adc.c:246:6:HAL_ADC_MspDeInit	16	static
+adc.c:32:6:cutOffSetup	8	static
+adc.c:63:6:HAL_ADC_ConvCpltCallback	3928	static
+adc.c:147:6:copy_LP	24	static
+adc.c:152:6:copy_HP	24	static
+adc.c:162:6:MX_ADC3_Init	32	static
+adc.c:202:6:HAL_ADC_MspInit	48	static
+adc.c:248:6:HAL_ADC_MspDeInit	16	static

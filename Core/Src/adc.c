@@ -26,6 +26,7 @@
 #include <complex.h>
 #include "fft.h"
 #include "usart.h"
+#include "lcd.h"
 
 
 void cutOffSetup() {
@@ -73,35 +74,36 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 				arrayInt[i] = buffer[i];
 			}
 
-		float sum = 0;
+	float sum = 0;
 
-		if(!lowpass) {										//!lowpass= 1 -> HP
-			for(int n = 0; n < BUFFER_SIZE; ++n) {
-				for(int k = 0; k < FILTER_ORDER; ++k) {
-					if(n - k >= 0)
-						sum += firCoef_LP[k] * array[n-k];
-					else
-						sum += firCoef_LP[k] * arrayFormer[BUFFER_SIZE + n - k + 1];
-				}
-				filteredArray[n] = sum;
-				sum = 0;
+	if(!lowpass) {										//!lowpass= 1 -> HP
+		for(int n = 0; n < BUFFER_SIZE; ++n) {
+			for(int k = 0; k < FILTER_ORDER; ++k) {
+				if(n - k >= 0)
+					sum += firCoef_LP[k] * array[n-k];
+				else
+					sum += firCoef_LP[k] * arrayFormer[BUFFER_SIZE + n - k + 1];
 			}
-		} else {											//!lowpass = 0 -> LP
-			for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
-				for(int k = 0; k < FILTER_ORDER; ++k) {	//N = L - 1 = BUFFER_SIZE - 1
-					if(n - k >= 0)
-						sum += firCoef_HP[k] * array[n-k];
-					else
-						sum += firCoef_HP[k] * arrayFormer[BUFFER_SIZE + n - k + 1];
-				}
-				filteredArray[n] = sum;
-				sum = 0;
-			}
+			filteredArray[n] = sum;
+			sum = 0;
 		}
-			for(int i = 0; i < BUFFER_SIZE; i++) {
-				filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
-				arrayFormer[i] = array[i];
+	} else {											//!lowpass = 0 -> LP
+		for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
+			for(int k = 0; k < FILTER_ORDER; ++k) {	//N = L - 1 = BUFFER_SIZE - 1
+				if(n - k >= 0)
+					sum += firCoef_HP[k] * array[n-k];
+				else
+					sum += firCoef_HP[k] * arrayFormer[BUFFER_SIZE + n - k + 1];
 			}
+			filteredArray[n] = sum;
+			sum = 0;
+		}
+	}
+
+	for(int i = 0; i < BUFFER_SIZE; i++) {
+		filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
+		arrayFormer[i] = array[i];
+	}
 
 		if(!signal_q) {
 
@@ -115,7 +117,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 				for (int k = 0; k < BUFFER_SIZE; k++){
 					spectrum_int[k] = (int) cabsf(vector[k]);
 				}
-				STS(spectrum_int, "SPECTRUM");
+				STS(spectrum_int);
 			} else {
 				int spectrum_int[BUFFER_SIZE];
 				float complex vector[BUFFER_SIZE];
@@ -126,7 +128,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 				for (int k = 0; k < BUFFER_SIZE; k++){
 					spectrum_int[k] = (int) cabsf(vector[k]);
 				}
-				STS(spectrum_int, "SPECTRUM");
+				STS(spectrum_int);
 			}
 		} else {
 			if(filtered){
