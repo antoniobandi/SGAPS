@@ -9,41 +9,41 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .rodata       00001ae8  08010868  08010868  00020868  2**3
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08012350  08012350  00030b5c  2**0
+  3 .ARM.extab    00000000  08012350  08012350  00030b54  2**0
                   CONTENTS
   4 .ARM          00000008  08012350  08012350  00022350  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08012358  08012358  00030b5c  2**0
+  5 .preinit_array 00000000  08012358  08012358  00030b54  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   6 .init_array   00000004  08012358  08012358  00022358  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   7 .fini_array   00000004  0801235c  0801235c  0002235c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000b5c  20000000  08012360  00030000  2**3
+  8 .data         00000b54  20000000  08012360  00030000  2**3
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00002b6c  20000b5c  08012ebc  00030b5c  2**2
+  9 .bss          00002b6c  20000b54  08012eb4  00030b54  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  200036c8  08012ebc  000336c8  2**0
+ 10 ._user_heap_stack 00000600  200036c0  08012eb4  000336c0  2**0
                   ALLOC
- 11 .ARM.attributes 00000030  00000000  00000000  00030b5c  2**0
+ 11 .ARM.attributes 00000030  00000000  00000000  00030b54  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000258d5  00000000  00000000  00030b8c  2**0
+ 12 .debug_info   000258d5  00000000  00000000  00030b84  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00005737  00000000  00000000  00056461  2**0
+ 13 .debug_abbrev 00005737  00000000  00000000  00056459  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001c60  00000000  00000000  0005bb98  2**3
+ 14 .debug_aranges 00001c60  00000000  00000000  0005bb90  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00001998  00000000  00000000  0005d7f8  2**3
+ 15 .debug_ranges 00001998  00000000  00000000  0005d7f0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  0002b43d  00000000  00000000  0005f190  2**0
+ 16 .debug_macro  0002b43d  00000000  00000000  0005f188  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0001d311  00000000  00000000  0008a5cd  2**0
+ 17 .debug_line   0001d311  00000000  00000000  0008a5c5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000ec8f5  00000000  00000000  000a78de  2**0
+ 18 .debug_str    000ec8f5  00000000  00000000  000a78d6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  001941d3  2**0
+ 19 .comment      0000007b  00000000  00000000  001941cb  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00008670  00000000  00000000  00194250  2**2
+ 20 .debug_frame  00008670  00000000  00000000  00194248  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -60,7 +60,7 @@ Disassembly of section .text:
  80001c2:	2301      	movs	r3, #1
  80001c4:	7023      	strb	r3, [r4, #0]
  80001c6:	bd10      	pop	{r4, pc}
- 80001c8:	20000b5c 	.word	0x20000b5c
+ 80001c8:	20000b54 	.word	0x20000b54
  80001cc:	00000000 	.word	0x00000000
  80001d0:	08010850 	.word	0x08010850
 
@@ -73,7 +73,7 @@ Disassembly of section .text:
  80001de:	f3af 8000 	nop.w
  80001e2:	bd08      	pop	{r3, pc}
  80001e4:	00000000 	.word	0x00000000
- 80001e8:	20000b60 	.word	0x20000b60
+ 80001e8:	20000b58 	.word	0x20000b58
  80001ec:	08010850 	.word	0x08010850
 
 080001f0 <strlen>:
@@ -2228,11 +2228,11 @@ void cutOffSetup() {
  80019ec:	3fe66666 	.word	0x3fe66666
  80019f0:	9999999a 	.word	0x9999999a
  80019f4:	3fe99999 	.word	0x3fe99999
- 80019f8:	20000960 	.word	0x20000960
+ 80019f8:	20000958 	.word	0x20000958
  80019fc:	20000000 	.word	0x20000000
- 8001a00:	20000ce8 	.word	0x20000ce8
+ 8001a00:	20000ce0 	.word	0x20000ce0
  8001a04:	200004a4 	.word	0x200004a4
- 8001a08:	200011e8 	.word	0x200011e8
+ 8001a08:	200011e0 	.word	0x200011e0
  8001a0c:	20000084 	.word	0x20000084
  8001a10:	20000528 	.word	0x20000528
  8001a14:	20000108 	.word	0x20000108
@@ -2608,22 +2608,22 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
  8001dc0:	2300      	movs	r3, #0
  8001dc2:	f8c7 3f24 	str.w	r3, [r7, #3876]	; 0xf24
  8001dc6:	e045      	b.n	8001e54 <HAL_ADC_ConvCpltCallback+0x404>
- 8001dc8:	2000174c 	.word	0x2000174c
+ 8001dc8:	20001744 	.word	0x20001744
  8001dcc:	40021800 	.word	0x40021800
- 8001dd0:	20000954 	.word	0x20000954
- 8001dd4:	20002194 	.word	0x20002194
+ 8001dd0:	20000950 	.word	0x20000950
+ 8001dd4:	2000218c 	.word	0x2000218c
  8001dd8:	457ff000 	.word	0x457ff000
- 8001ddc:	20002e18 	.word	0x20002e18
- 8001de0:	20001794 	.word	0x20001794
- 8001de4:	20000b7d 	.word	0x20000b7d
- 8001de8:	20000ce8 	.word	0x20000ce8
- 8001dec:	20001c94 	.word	0x20001c94
- 8001df0:	20002414 	.word	0x20002414
- 8001df4:	200011e8 	.word	0x200011e8
+ 8001ddc:	20002e10 	.word	0x20002e10
+ 8001de0:	2000178c 	.word	0x2000178c
+ 8001de4:	20000b76 	.word	0x20000b76
+ 8001de8:	20000ce0 	.word	0x20000ce0
+ 8001dec:	20001c8c 	.word	0x20001c8c
+ 8001df0:	2000240c 	.word	0x2000240c
+ 8001df4:	200011e0 	.word	0x200011e0
  8001df8:	44ffe000 	.word	0x44ffe000
- 8001dfc:	20002914 	.word	0x20002914
+ 8001dfc:	2000290c 	.word	0x2000290c
  8001e00:	2000094b 	.word	0x2000094b
- 8001e04:	2000094c 	.word	0x2000094c
+ 8001e04:	20000b75 	.word	0x20000b75
 					spectrum_int[k] = (int) cabsf(vector[k]);
  8001e08:	f207 530c 	addw	r3, r7, #1292	; 0x50c
  8001e0c:	f8d7 2f24 	ldr.w	r2, [r7, #3876]	; 0xf24
@@ -2769,12 +2769,12 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
  8001f62:	46bd      	mov	sp, r7
  8001f64:	bd90      	pop	{r4, r7, pc}
  8001f66:	bf00      	nop
- 8001f68:	20001794 	.word	0x20001794
- 8001f6c:	2000094c 	.word	0x2000094c
- 8001f70:	20002914 	.word	0x20002914
+ 8001f68:	2000178c 	.word	0x2000178c
+ 8001f6c:	20000b75 	.word	0x20000b75
+ 8001f70:	2000290c 	.word	0x2000290c
  8001f74:	40021800 	.word	0x40021800
- 8001f78:	20002194 	.word	0x20002194
- 8001f7c:	2000174c 	.word	0x2000174c
+ 8001f78:	2000218c 	.word	0x2000218c
+ 8001f7c:	20001744 	.word	0x20001744
 
 08001f80 <copy_LP>:
 
@@ -2983,11 +2983,11 @@ void MX_ADC3_Init(void)
  80020b6:	3718      	adds	r7, #24
  80020b8:	46bd      	mov	sp, r7
  80020ba:	bd80      	pop	{r7, pc}
- 80020bc:	2000174c 	.word	0x2000174c
+ 80020bc:	20001744 	.word	0x20001744
  80020c0:	40012200 	.word	0x40012200
  80020c4:	0f000001 	.word	0x0f000001
- 80020c8:	20002e18 	.word	0x20002e18
- 80020cc:	20001c94 	.word	0x20001c94
+ 80020c8:	20002e10 	.word	0x20002e10
+ 80020cc:	20001c8c 	.word	0x20001c8c
 
 080020d0 <HAL_ADC_MspInit>:
 
@@ -3135,7 +3135,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
  80021ac:	40012200 	.word	0x40012200
  80021b0:	40023800 	.word	0x40023800
  80021b4:	40021400 	.word	0x40021400
- 80021b8:	200016ec 	.word	0x200016ec
+ 80021b8:	200016e4 	.word	0x200016e4
  80021bc:	40026410 	.word	0x40026410
 
 080021c0 <generate>:
@@ -3256,16 +3256,16 @@ void generate () {
  8002286:	46bd      	mov	sp, r7
  8002288:	bd80      	pop	{r7, pc}
  800228a:	bf00      	nop
- 800228c:	20003320 	.word	0x20003320
- 8002290:	20000954 	.word	0x20000954
- 8002294:	20003528 	.word	0x20003528
- 8002298:	20000958 	.word	0x20000958
- 800229c:	2000331c 	.word	0x2000331c
+ 800228c:	20003318 	.word	0x20003318
+ 8002290:	20000950 	.word	0x20000950
+ 8002294:	20003520 	.word	0x20003520
+ 8002298:	20000954 	.word	0x20000954
+ 800229c:	20003314 	.word	0x20003314
  80022a0:	2000094a 	.word	0x2000094a
- 80022a4:	2000331d 	.word	0x2000331d
- 80022a8:	20000b7c 	.word	0x20000b7c
- 80022ac:	20003324 	.word	0x20003324
- 80022b0:	200034b4 	.word	0x200034b4
+ 80022a4:	20003315 	.word	0x20003315
+ 80022a8:	20000b74 	.word	0x20000b74
+ 80022ac:	2000331c 	.word	0x2000331c
+ 80022b0:	200034ac 	.word	0x200034ac
 
 080022b4 <MX_DAC_Init>:
 DAC_HandleTypeDef hdac;
@@ -3327,7 +3327,7 @@ void MX_DAC_Init(void)
  80022fa:	46bd      	mov	sp, r7
  80022fc:	bd80      	pop	{r7, pc}
  80022fe:	bf00      	nop
- 8002300:	200034b4 	.word	0x200034b4
+ 8002300:	200034ac 	.word	0x200034ac
  8002304:	40007400 	.word	0x40007400
 
 08002308 <HAL_DAC_MspInit>:
@@ -3485,7 +3485,7 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* dacHandle)
  80023f4:	40007400 	.word	0x40007400
  80023f8:	40023800 	.word	0x40023800
  80023fc:	40020000 	.word	0x40020000
- 8002400:	200034c8 	.word	0x200034c8
+ 8002400:	200034c0 	.word	0x200034c0
  8002404:	400260a0 	.word	0x400260a0
 
 08002408 <MX_TIM6_Freq_Init>:
@@ -3594,9 +3594,9 @@ void MX_TIM6_Freq_Init()
  8002492:	3708      	adds	r7, #8
  8002494:	46bd      	mov	sp, r7
  8002496:	bd80      	pop	{r7, pc}
- 8002498:	20003600 	.word	0x20003600
+ 8002498:	200035f8 	.word	0x200035f8
  800249c:	40001000 	.word	0x40001000
- 80024a0:	20000958 	.word	0x20000958
+ 80024a0:	20000954 	.word	0x20000954
  80024a4:	00015f90 	.word	0x00015f90
 
 080024a8 <racunaj_sinus>:
@@ -3695,10 +3695,10 @@ void racunaj_sinus()
  8002584:	400921fb 	.word	0x400921fb
  8002588:	00000000 	.word	0x00000000
  800258c:	40affe00 	.word	0x40affe00
- 8002590:	20000954 	.word	0x20000954
+ 8002590:	20000950 	.word	0x20000950
  8002594:	40590000 	.word	0x40590000
  8002598:	3ff00000 	.word	0x3ff00000
- 800259c:	20003324 	.word	0x20003324
+ 800259c:	2000331c 	.word	0x2000331c
 
 080025a0 <racunaj_pravokutni>:
 
@@ -3760,9 +3760,9 @@ void racunaj_pravokutni()
  8002606:	bd90      	pop	{r4, r7, pc}
  8002608:	851eb852 	.word	0x851eb852
  800260c:	400851eb 	.word	0x400851eb
- 8002610:	20000954 	.word	0x20000954
+ 8002610:	20000950 	.word	0x20000950
  8002614:	457ff000 	.word	0x457ff000
- 8002618:	20003324 	.word	0x20003324
+ 8002618:	2000331c 	.word	0x2000331c
 
 0800261c <MX_DMA_Init>:
 
@@ -3899,7 +3899,7 @@ void MX_DMA2D_Init(void)
  80026de:	bf00      	nop
  80026e0:	bd80      	pop	{r7, pc}
  80026e2:	bf00      	nop
- 80026e4:	2000352c 	.word	0x2000352c
+ 80026e4:	20003524 	.word	0x20003524
  80026e8:	4002b000 	.word	0x4002b000
 
 080026ec <HAL_DMA2D_MspInit>:
@@ -4783,7 +4783,7 @@ void MX_FMC_Init(void)
  8002d8e:	46bd      	mov	sp, r7
  8002d90:	bd80      	pop	{r7, pc}
  8002d92:	bf00      	nop
- 8002d94:	2000356c 	.word	0x2000356c
+ 8002d94:	20003564 	.word	0x20003564
  8002d98:	a0000140 	.word	0xa0000140
 
 08002d9c <HAL_FMC_MspInit>:
@@ -4967,7 +4967,7 @@ static void HAL_FMC_MspInit(void){
  8002e7e:	46bd      	mov	sp, r7
  8002e80:	bd80      	pop	{r7, pc}
  8002e82:	bf00      	nop
- 8002e84:	20000b78 	.word	0x20000b78
+ 8002e84:	20000b70 	.word	0x20000b70
  8002e88:	40023800 	.word	0x40023800
  8002e8c:	40021400 	.word	0x40021400
  8002e90:	40020800 	.word	0x40020800
@@ -5383,7 +5383,7 @@ void StartScreen(void){
  800317e:	3738      	adds	r7, #56	; 0x38
  8003180:	46bd      	mov	sp, r7
  8003182:	bdb0      	pop	{r4, r5, r7, pc}
- 8003184:	20000978 	.word	0x20000978
+ 8003184:	20000970 	.word	0x20000970
  8003188:	08010868 	.word	0x08010868
  800318c:	0801087c 	.word	0x0801087c
  8003190:	0046464f 	.word	0x0046464f
@@ -5537,7 +5537,7 @@ void ScreenIntro(void){
  80032c0:	0801088c 	.word	0x0801088c
  80032c4:	080108a4 	.word	0x080108a4
  80032c8:	080108c0 	.word	0x080108c0
- 80032cc:	20000978 	.word	0x20000978
+ 80032cc:	20000970 	.word	0x20000970
  80032d0:	01312cff 	.word	0x01312cff
  80032d4:	080108d4 	.word	0x080108d4
  80032d8:	080108e8 	.word	0x080108e8
@@ -6516,7 +6516,7 @@ void STS (int* signal){
  8003af4:	bfa56154 	.word	0xbfa56154
  8003af8:	00000000 	.word	0x00000000
  8003afc:	40656000 	.word	0x40656000
- 8003b00:	20000958 	.word	0x20000958
+ 8003b00:	20000954 	.word	0x20000954
 
 08003b04 <Window>:
 
@@ -6751,9 +6751,9 @@ int main(void)
  8003c6e:	f7fd fdfb 	bl	8001868 <cutOffSetup>
 	  generate();
  8003c72:	e7f8      	b.n	8003c66 <main+0x72>
- 8003c74:	20002194 	.word	0x20002194
- 8003c78:	2000174c 	.word	0x2000174c
- 8003c7c:	20001c94 	.word	0x20001c94
+ 8003c74:	2000218c 	.word	0x2000218c
+ 8003c78:	20001744 	.word	0x20001744
+ 8003c7c:	20001c8c 	.word	0x20001c8c
 
 08003c80 <SystemClock_Config>:
 /**
@@ -7349,21 +7349,21 @@ void matlab(void){
  800410c:	701a      	strb	r2, [r3, #0]
 			break;
  800410e:	e133      	b.n	8004378 <matlab+0x5d8>
- 8004110:	20000950 	.word	0x20000950
- 8004114:	200035a4 	.word	0x200035a4
+ 8004110:	2000094c 	.word	0x2000094c
+ 8004114:	2000359c 	.word	0x2000359c
  8004118:	20000948 	.word	0x20000948
  800411c:	0801090c 	.word	0x0801090c
  8004120:	2000094a 	.word	0x2000094a
  8004124:	08010910 	.word	0x08010910
  8004128:	08010918 	.word	0x08010918
- 800412c:	20000b7c 	.word	0x20000b7c
+ 800412c:	20000b74 	.word	0x20000b74
  8004130:	08010920 	.word	0x08010920
- 8004134:	200035a0 	.word	0x200035a0
- 8004138:	20000958 	.word	0x20000958
+ 8004134:	20003598 	.word	0x20003598
+ 8004138:	20000954 	.word	0x20000954
  800413c:	3a000801 	.word	0x3a000801
- 8004140:	20000954 	.word	0x20000954
+ 8004140:	20000950 	.word	0x20000950
  8004144:	08010928 	.word	0x08010928
- 8004148:	20000b7d 	.word	0x20000b7d
+ 8004148:	20000b76 	.word	0x20000b76
  800414c:	08010930 	.word	0x08010930
  8004150:	08010938 	.word	0x08010938
  8004154:	2000094b 	.word	0x2000094b
@@ -7690,16 +7690,16 @@ void matlab(void){
  80043c8:	cccccccd 	.word	0xcccccccd
  80043cc:	3feccccc 	.word	0x3feccccc
  80043d0:	08010948 	.word	0x08010948
- 80043d4:	2000094c 	.word	0x2000094c
+ 80043d4:	20000b75 	.word	0x20000b75
  80043d8:	08010950 	.word	0x08010950
  80043dc:	2000094a 	.word	0x2000094a
- 80043e0:	20000b7c 	.word	0x20000b7c
+ 80043e0:	20000b74 	.word	0x20000b74
  80043e4:	2000094b 	.word	0x2000094b
- 80043e8:	20000b7d 	.word	0x20000b7d
- 80043ec:	20000950 	.word	0x20000950
- 80043f0:	20000954 	.word	0x20000954
- 80043f4:	20000958 	.word	0x20000958
- 80043f8:	20000960 	.word	0x20000960
+ 80043e8:	20000b76 	.word	0x20000b76
+ 80043ec:	2000094c 	.word	0x2000094c
+ 80043f0:	20000950 	.word	0x20000950
+ 80043f4:	20000954 	.word	0x20000954
+ 80043f8:	20000958 	.word	0x20000958
  80043fc:	3fe00000 	.word	0x3fe00000
  8004400:	08010954 	.word	0x08010954
  8004404:	0801095c 	.word	0x0801095c
@@ -7783,7 +7783,7 @@ void MX_SPI1_Init(void)
 }
  8004484:	bf00      	nop
  8004486:	bd80      	pop	{r7, pc}
- 8004488:	200035a8 	.word	0x200035a8
+ 8004488:	200035a0 	.word	0x200035a0
  800448c:	40013000 	.word	0x40013000
 
 08004490 <HAL_SPI_MspInit>:
@@ -8149,7 +8149,7 @@ void DMA1_Stream6_IRQHandler(void)
  800460e:	bf00      	nop
  8004610:	bd80      	pop	{r7, pc}
  8004612:	bf00      	nop
- 8004614:	200034c8 	.word	0x200034c8
+ 8004614:	200034c0 	.word	0x200034c0
 
 08004618 <USART1_IRQHandler>:
 
@@ -8174,7 +8174,7 @@ void USART1_IRQHandler(void)
 }
  8004628:	bf00      	nop
  800462a:	bd80      	pop	{r7, pc}
- 800462c:	20003650 	.word	0x20003650
+ 800462c:	20003648 	.word	0x20003648
 
 08004630 <TIM6_DAC_IRQHandler>:
 
@@ -8200,8 +8200,8 @@ void TIM6_DAC_IRQHandler(void)
 }
  8004640:	bf00      	nop
  8004642:	bd80      	pop	{r7, pc}
- 8004644:	200034b4 	.word	0x200034b4
- 8004648:	20003600 	.word	0x20003600
+ 8004644:	200034ac 	.word	0x200034ac
+ 8004648:	200035f8 	.word	0x200035f8
 
 0800464c <DMA2_Stream0_IRQHandler>:
 
@@ -8225,7 +8225,7 @@ void DMA2_Stream0_IRQHandler(void)
  8004656:	bf00      	nop
  8004658:	bd80      	pop	{r7, pc}
  800465a:	bf00      	nop
- 800465c:	200016ec 	.word	0x200016ec
+ 800465c:	200016e4 	.word	0x200016e4
 
 08004660 <_sbrk>:
  *
@@ -8305,8 +8305,8 @@ void *_sbrk(ptrdiff_t incr)
  80046ba:	bd80      	pop	{r7, pc}
  80046bc:	20030000 	.word	0x20030000
  80046c0:	00000400 	.word	0x00000400
- 80046c4:	20000b80 	.word	0x20000b80
- 80046c8:	200036c8 	.word	0x200036c8
+ 80046c4:	20000b78 	.word	0x20000b78
+ 80046c8:	200036c0 	.word	0x200036c0
 
 080046cc <SystemInit>:
   *         configuration.
@@ -8413,7 +8413,7 @@ void MX_TIM6_Init(void)
  8004752:	3708      	adds	r7, #8
  8004754:	46bd      	mov	sp, r7
  8004756:	bd80      	pop	{r7, pc}
- 8004758:	20003600 	.word	0x20003600
+ 8004758:	200035f8 	.word	0x200035f8
  800475c:	40001000 	.word	0x40001000
 
 08004760 <HAL_TIM_Base_MspInit>:
@@ -8488,7 +8488,7 @@ void start_timer() {
  80047ba:	bf00      	nop
  80047bc:	bd80      	pop	{r7, pc}
  80047be:	bf00      	nop
- 80047c0:	20003600 	.word	0x20003600
+ 80047c0:	200035f8 	.word	0x200035f8
 
 080047c4 <MX_USART1_UART_Init>:
 UART_HandleTypeDef huart1;
@@ -8547,7 +8547,7 @@ void MX_USART1_UART_Init(void)
  800480a:	bf00      	nop
  800480c:	bd80      	pop	{r7, pc}
  800480e:	bf00      	nop
- 8004810:	20003650 	.word	0x20003650
+ 8004810:	20003648 	.word	0x20003648
  8004814:	40011000 	.word	0x40011000
 
 08004818 <HAL_UART_MspInit>:
@@ -8727,11 +8727,11 @@ void  USER_UART_IRQHandler(UART_HandleTypeDef *huart) {
  8004920:	4770      	bx	lr
  8004922:	bf00      	nop
  8004924:	40011000 	.word	0x40011000
- 8004928:	20002e14 	.word	0x20002e14
- 800492c:	20003690 	.word	0x20003690
- 8004930:	20000b84 	.word	0x20000b84
- 8004934:	20003694 	.word	0x20003694
- 8004938:	20003640 	.word	0x20003640
+ 8004928:	20002e0c 	.word	0x20002e0c
+ 800492c:	20003688 	.word	0x20003688
+ 8004930:	20000b7c 	.word	0x20000b7c
+ 8004934:	2000368c 	.word	0x2000368c
+ 8004938:	20003638 	.word	0x20003638
 
 0800493c <USART1_SendChar>:
 
@@ -8753,7 +8753,7 @@ void  USART1_SendChar(uint8_t c) {
  8004956:	46bd      	mov	sp, r7
  8004958:	bd80      	pop	{r7, pc}
  800495a:	bf00      	nop
- 800495c:	20003650 	.word	0x20003650
+ 800495c:	20003648 	.word	0x20003648
 
 08004960 <USART1_SendInt>:
 	USART1_SendChar(array_cast[1]);
@@ -8788,7 +8788,7 @@ void USART1_SendInt(int v) {
  800498a:	3708      	adds	r7, #8
  800498c:	46bd      	mov	sp, r7
  800498e:	bd80      	pop	{r7, pc}
- 8004990:	20003318 	.word	0x20003318
+ 8004990:	20003310 	.word	0x20003310
 
 08004994 <USART1_Dequeue>:
 
@@ -8852,9 +8852,9 @@ int  USART1_Dequeue(char* c) {
  80049ea:	3710      	adds	r7, #16
  80049ec:	46bd      	mov	sp, r7
  80049ee:	bd80      	pop	{r7, pc}
- 80049f0:	20003690 	.word	0x20003690
- 80049f4:	20003694 	.word	0x20003694
- 80049f8:	20003640 	.word	0x20003640
+ 80049f0:	20003688 	.word	0x20003688
+ 80049f4:	2000368c 	.word	0x2000368c
+ 80049f8:	20003638 	.word	0x20003638
 
 080049fc <Reset_Handler>:
 
@@ -8937,11 +8937,11 @@ LoopFillZerobss:
   ldr  r0, =_sdata
  8004a3c:	20000000 	.word	0x20000000
   ldr  r3, =_edata
- 8004a40:	20000b5c 	.word	0x20000b5c
+ 8004a40:	20000b54 	.word	0x20000b54
   ldr  r2, =_sbss
- 8004a44:	20000b5c 	.word	0x20000b5c
+ 8004a44:	20000b54 	.word	0x20000b54
   ldr  r3, = _ebss
- 8004a48:	200036c8 	.word	0x200036c8
+ 8004a48:	200036c0 	.word	0x200036c0
 
 08004a4c <ADC_IRQHandler>:
  * @retval None       
@@ -9075,9 +9075,9 @@ __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  8004ae2:	3708      	adds	r7, #8
  8004ae4:	46bd      	mov	sp, r7
  8004ae6:	bd80      	pop	{r7, pc}
- 8004ae8:	20000968 	.word	0x20000968
- 8004aec:	20000970 	.word	0x20000970
- 8004af0:	2000096c 	.word	0x2000096c
+ 8004ae8:	20000960 	.word	0x20000960
+ 8004aec:	20000968 	.word	0x20000968
+ 8004af0:	20000964 	.word	0x20000964
 
 08004af4 <HAL_ADC_Init>:
   * @param  hadc pointer to a ADC_HandleTypeDef structure that contains
@@ -9524,7 +9524,7 @@ HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, ui
  8004d36:	3718      	adds	r7, #24
  8004d38:	46bd      	mov	sp, r7
  8004d3a:	bd80      	pop	{r7, pc}
- 8004d3c:	20000968 	.word	0x20000968
+ 8004d3c:	20000960 	.word	0x20000960
  8004d40:	431bde83 	.word	0x431bde83
  8004d44:	40012300 	.word	0x40012300
  8004d48:	08005279 	.word	0x08005279
@@ -10079,7 +10079,7 @@ HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef* hadc, ADC_ChannelConf
  800506c:	40012300 	.word	0x40012300
  8005070:	40012000 	.word	0x40012000
  8005074:	10000012 	.word	0x10000012
- 8005078:	20000968 	.word	0x20000968
+ 8005078:	20000960 	.word	0x20000960
  800507c:	431bde83 	.word	0x431bde83
 
 08005080 <ADC_Init>:
@@ -13220,7 +13220,7 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
  800604a:	6878      	ldr	r0, [r7, #4]
  800604c:	4798      	blx	r3
  800604e:	e022      	b.n	8006096 <HAL_DMA_IRQHandler+0x29e>
- 8006050:	20000968 	.word	0x20000968
+ 8006050:	20000960 	.word	0x20000960
  8006054:	1b4e81b5 	.word	0x1b4e81b5
         }
       }
@@ -17834,8 +17834,8 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  8007a60:	40023c00 	.word	0x40023c00
  8007a64:	40023800 	.word	0x40023800
  8007a68:	0801099c 	.word	0x0801099c
- 8007a6c:	20000968 	.word	0x20000968
- 8007a70:	2000096c 	.word	0x2000096c
+ 8007a6c:	20000960 	.word	0x20000960
+ 8007a70:	20000964 	.word	0x20000964
 
 08007a74 <HAL_RCC_GetSysClockFreq>:
   *
@@ -18070,7 +18070,7 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  8007c30:	f85d 7b04 	ldr.w	r7, [sp], #4
  8007c34:	4770      	bx	lr
  8007c36:	bf00      	nop
- 8007c38:	20000968 	.word	0x20000968
+ 8007c38:	20000960 	.word	0x20000960
 
 08007c3c <HAL_RCC_GetPCLK1Freq>:
   * @note   Each time PCLK1 changes, this function must be called to update the
@@ -22828,9 +22828,9 @@ void HAL_IncTick(void) {
  80098a2:	46bd      	mov	sp, r7
  80098a4:	bd80      	pop	{r7, pc}
  80098a6:	bf00      	nop
- 80098a8:	20000b8c 	.word	0x20000b8c
- 80098ac:	20000b88 	.word	0x20000b88
- 80098b0:	20000b90 	.word	0x20000b90
+ 80098a8:	20000b84 	.word	0x20000b84
+ 80098ac:	20000b80 	.word	0x20000b80
+ 80098b0:	20000b88 	.word	0x20000b88
 
 080098b4 <HAL_Delay>:
 
@@ -22908,7 +22908,7 @@ uint32_t HAL_GetTick(void) {
  8009914:	f85d 7b04 	ldr.w	r7, [sp], #4
  8009918:	4770      	bx	lr
  800991a:	bf00      	nop
- 800991c:	20000b8c 	.word	0x20000b8c
+ 800991c:	20000b84 	.word	0x20000b84
 
 08009920 <DMA2D_Convert565ToARGB8888>:
 static DMA2D_HandleTypeDef DMA2DHandle;
@@ -22934,7 +22934,7 @@ static void DMA2D_Convert565ToARGB8888(uint32_t color) {
  8009934:	f85d 7b04 	ldr.w	r7, [sp], #4
  8009938:	4770      	bx	lr
  800993a:	bf00      	nop
- 800993c:	20000974 	.word	0x20000974
+ 800993c:	2000096c 	.word	0x2000096c
 
 08009940 <TM_DMA2DGRAPHIC_Init>:
 void TM_INT_DMA2DGRAPHIC_InitAndTransfer(void);
@@ -23030,8 +23030,8 @@ void TM_DMA2DGRAPHIC_Init(void) {
  80099cc:	46bd      	mov	sp, r7
  80099ce:	f85d 7b04 	ldr.w	r7, [sp], #4
  80099d2:	4770      	bx	lr
- 80099d4:	2000369c 	.word	0x2000369c
- 80099d8:	20000ba8 	.word	0x20000ba8
+ 80099d4:	20003694 	.word	0x20003694
+ 80099d8:	20000ba0 	.word	0x20000ba0
  80099dc:	4002b000 	.word	0x4002b000
  80099e0:	40023800 	.word	0x40023800
 
@@ -23062,7 +23062,7 @@ void TM_DMA2DGRAPHIC_SetLayer(uint8_t layer_number) {
  8009a08:	f85d 7b04 	ldr.w	r7, [sp], #4
  8009a0c:	4770      	bx	lr
  8009a0e:	bf00      	nop
- 8009a10:	2000369c 	.word	0x2000369c
+ 8009a10:	20003694 	.word	0x20003694
 
 08009a14 <TM_DMA2DGRAPHIC_DrawPixel>:
 
@@ -23228,7 +23228,7 @@ void TM_DMA2DGRAPHIC_DrawPixel(uint16_t x, uint16_t y, uint32_t color) {
  8009b3e:	bc90      	pop	{r4, r7}
  8009b40:	4770      	bx	lr
  8009b42:	bf00      	nop
- 8009b44:	2000369c 	.word	0x2000369c
+ 8009b44:	20003694 	.word	0x20003694
 
 08009b48 <TM_DMA2DGRAPHIC_GetPixel>:
 
@@ -23382,7 +23382,7 @@ uint32_t TM_DMA2DGRAPHIC_GetPixel(uint16_t x, uint16_t y) {
  8009c66:	bc90      	pop	{r4, r7}
  8009c68:	4770      	bx	lr
  8009c6a:	bf00      	nop
- 8009c6c:	2000369c 	.word	0x2000369c
+ 8009c6c:	20003694 	.word	0x20003694
 
 08009c70 <TM_DMA2DGRAPHIC_SetOrientation>:
 
@@ -23452,7 +23452,7 @@ void TM_DMA2DGRAPHIC_SetOrientation(uint8_t orientation) {
  8009cc4:	f85d 7b04 	ldr.w	r7, [sp], #4
  8009cc8:	4770      	bx	lr
  8009cca:	bf00      	nop
- 8009ccc:	2000369c 	.word	0x2000369c
+ 8009ccc:	20003694 	.word	0x20003694
 
 08009cd0 <TM_DMA2DGRAPHIC_Fill>:
 
@@ -23532,9 +23532,9 @@ void TM_DMA2DGRAPHIC_Fill(uint32_t color) {
  8009d4a:	46bd      	mov	sp, r7
  8009d4c:	bd80      	pop	{r7, pc}
  8009d4e:	bf00      	nop
- 8009d50:	20000ba8 	.word	0x20000ba8
- 8009d54:	2000369c 	.word	0x2000369c
- 8009d58:	20000974 	.word	0x20000974
+ 8009d50:	20000ba0 	.word	0x20000ba0
+ 8009d54:	20003694 	.word	0x20003694
+ 8009d58:	2000096c 	.word	0x2000096c
 
 08009d5c <TM_INT_DMA2DGRAPHIC_SetConf>:
 	/* Start DMA2D */
@@ -23615,7 +23615,7 @@ void TM_INT_DMA2DGRAPHIC_SetConf(TM_DMA2DGRAPHIC_INT_Conf_t* Conf) {
  8009dce:	3708      	adds	r7, #8
  8009dd0:	46bd      	mov	sp, r7
  8009dd2:	bd80      	pop	{r7, pc}
- 8009dd4:	2000369c 	.word	0x2000369c
+ 8009dd4:	20003694 	.word	0x20003694
 
 08009dd8 <TM_EXTI_Handler>:
 	EXTI->FTSR &= 0xFFFF0000;
@@ -24374,7 +24374,7 @@ void TM_GPIO_INT_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TM_GPIO_Mode_t GPI
  800a226:	3710      	adds	r7, #16
  800a228:	46bd      	mov	sp, r7
  800a22a:	bd80      	pop	{r7, pc}
- 800a22c:	20000be8 	.word	0x20000be8
+ 800a22c:	20000be0 	.word	0x20000be0
 
 0800a230 <TM_SPI_Send>:
  * @brief  Sends single byte over SPI
@@ -24595,8 +24595,8 @@ TM_LCD_Result_t TM_LCD_Init(void) {
  800a362:	46bd      	mov	sp, r7
  800a364:	bd80      	pop	{r7, pc}
  800a366:	bf00      	nop
- 800a368:	20000cac 	.word	0x20000cac
- 800a36c:	20000980 	.word	0x20000980
+ 800a368:	20000ca4 	.word	0x20000ca4
+ 800a36c:	20000978 	.word	0x20000978
 
 0800a370 <TM_LCD_Fill>:
 
@@ -24693,7 +24693,7 @@ TM_LCD_Result_t TM_LCD_SetOrientation(uint8_t orientation) {
  800a3de:	46bd      	mov	sp, r7
  800a3e0:	bd80      	pop	{r7, pc}
  800a3e2:	bf00      	nop
- 800a3e4:	20000cac 	.word	0x20000cac
+ 800a3e4:	20000ca4 	.word	0x20000ca4
 
 0800a3e8 <TM_LCD_DisplayOn>:
 
@@ -24780,7 +24780,7 @@ TM_LCD_Result_t TM_LCD_SetXY(uint16_t X, uint16_t Y) {
  800a448:	46bd      	mov	sp, r7
  800a44a:	f85d 7b04 	ldr.w	r7, [sp], #4
  800a44e:	4770      	bx	lr
- 800a450:	20000cac 	.word	0x20000cac
+ 800a450:	20000ca4 	.word	0x20000ca4
 
 0800a454 <TM_LCD_SetFont>:
 uint16_t TM_LCD_GetCurrentY(void) {
@@ -24808,7 +24808,7 @@ TM_LCD_Result_t TM_LCD_SetFont(TM_FONT_t* Font) {
  800a468:	46bd      	mov	sp, r7
  800a46a:	f85d 7b04 	ldr.w	r7, [sp], #4
  800a46e:	4770      	bx	lr
- 800a470:	20000cac 	.word	0x20000cac
+ 800a470:	20000ca4 	.word	0x20000ca4
 
 0800a474 <TM_LCD_Putc>:
 	
@@ -25015,7 +25015,7 @@ TM_LCD_Result_t TM_LCD_Putc(char c) {
  800a5ae:	46bd      	mov	sp, r7
  800a5b0:	bd80      	pop	{r7, pc}
  800a5b2:	bf00      	nop
- 800a5b4:	20000cac 	.word	0x20000cac
+ 800a5b4:	20000ca4 	.word	0x20000ca4
 
 0800a5b8 <TM_LCD_DrawPixel>:
 
@@ -25148,7 +25148,7 @@ TM_LCD_Result_t TM_LCD_SetLayer1(void) {
  800a65a:	4618      	mov	r0, r3
  800a65c:	bd80      	pop	{r7, pc}
  800a65e:	bf00      	nop
- 800a660:	20000cac 	.word	0x20000cac
+ 800a660:	20000ca4 	.word	0x20000ca4
 
 0800a664 <TM_LCD_SetLayer2>:
 
@@ -25182,7 +25182,7 @@ TM_LCD_Result_t TM_LCD_SetLayer2(void) {
 }
  800a688:	4618      	mov	r0, r3
  800a68a:	bd80      	pop	{r7, pc}
- 800a68c:	20000cac 	.word	0x20000cac
+ 800a68c:	20000ca4 	.word	0x20000ca4
 
 0800a690 <TM_LCD_SetLayer1Opacity>:
 
@@ -25208,7 +25208,7 @@ TM_LCD_Result_t TM_LCD_SetLayer1Opacity(uint8_t opacity) {
  800a6aa:	3708      	adds	r7, #8
  800a6ac:	46bd      	mov	sp, r7
  800a6ae:	bd80      	pop	{r7, pc}
- 800a6b0:	20000c04 	.word	0x20000c04
+ 800a6b0:	20000bfc 	.word	0x20000bfc
 
 0800a6b4 <TM_LCD_SetLayer2Opacity>:
 
@@ -25234,7 +25234,7 @@ TM_LCD_Result_t TM_LCD_SetLayer2Opacity(uint8_t opacity) {
  800a6ce:	3708      	adds	r7, #8
  800a6d0:	46bd      	mov	sp, r7
  800a6d2:	bd80      	pop	{r7, pc}
- 800a6d4:	20000c04 	.word	0x20000c04
+ 800a6d4:	20000bfc 	.word	0x20000bfc
 
 0800a6d8 <TM_LCD_GetHeight>:
 
@@ -25254,7 +25254,7 @@ uint16_t TM_LCD_GetHeight(void) {
  800a6e4:	f85d 7b04 	ldr.w	r7, [sp], #4
  800a6e8:	4770      	bx	lr
  800a6ea:	bf00      	nop
- 800a6ec:	20000cac 	.word	0x20000cac
+ 800a6ec:	20000ca4 	.word	0x20000ca4
 
 0800a6f0 <TM_LCD_INT_InitLTDC>:
 uint8_t TM_LCD_GetOrientation(void) {
@@ -25416,7 +25416,7 @@ static void TM_LCD_INT_InitLTDC(void) {
  800a7de:	bd80      	pop	{r7, pc}
  800a7e0:	40023800 	.word	0x40023800
  800a7e4:	40016800 	.word	0x40016800
- 800a7e8:	20000c04 	.word	0x20000c04
+ 800a7e8:	20000bfc 	.word	0x20000bfc
 
 0800a7ec <TM_LCD_INT_InitLayers>:
 
@@ -25573,7 +25573,7 @@ static void TM_LCD_INT_InitLayers(void) {
  800a8be:	46bd      	mov	sp, r7
  800a8c0:	bd80      	pop	{r7, pc}
  800a8c2:	bf00      	nop
- 800a8c4:	20000c04 	.word	0x20000c04
+ 800a8c4:	20000bfc 	.word	0x20000bfc
  800a8c8:	d0025800 	.word	0xd0025800
 
 0800a8cc <TM_ILI9341_SendCommand>:
@@ -26168,7 +26168,7 @@ void LTDC_IRQHandler(void) {
  800ad22:	bf00      	nop
  800ad24:	bd80      	pop	{r7, pc}
  800ad26:	bf00      	nop
- 800ad28:	20000c04 	.word	0x20000c04
+ 800ad28:	20000bfc 	.word	0x20000bfc
 
 0800ad2c <TM_PVD_Handler>:
 }
@@ -26521,7 +26521,7 @@ uint8_t TM_SDRAM_Init(void) {
  800aef2:	46bd      	mov	sp, r7
  800aef4:	bd80      	pop	{r7, pc}
  800aef6:	bf00      	nop
- 800aef8:	20000cdc 	.word	0x20000cdc
+ 800aef8:	20000cd4 	.word	0x20000cd4
  800aefc:	a0000140 	.word	0xa0000140
  800af00:	40023800 	.word	0x40023800
  800af04:	000efff1 	.word	0x000efff1
@@ -27576,7 +27576,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800b562:	6818      	ldr	r0, [r3, #0]
  800b564:	4770      	bx	lr
  800b566:	bf00      	nop
- 800b568:	20000988 	.word	0x20000988
+ 800b568:	20000980 	.word	0x20000980
 
 0800b56c <__libc_init_array>:
  800b56c:	b570      	push	{r4, r5, r6, lr}
@@ -27615,7 +27615,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800b5b8:	6818      	ldr	r0, [r3, #0]
  800b5ba:	f000 b885 	b.w	800b6c8 <_malloc_r>
  800b5be:	bf00      	nop
- 800b5c0:	20000988 	.word	0x20000988
+ 800b5c0:	20000980 	.word	0x20000980
 
 0800b5c4 <free>:
  800b5c4:	4b02      	ldr	r3, [pc, #8]	; (800b5d0 <free+0xc>)
@@ -27623,7 +27623,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800b5c8:	6818      	ldr	r0, [r3, #0]
  800b5ca:	f000 b82f 	b.w	800b62c <_free_r>
  800b5ce:	bf00      	nop
- 800b5d0:	20000988 	.word	0x20000988
+ 800b5d0:	20000980 	.word	0x20000980
 
 0800b5d4 <memcpy>:
  800b5d4:	b510      	push	{r4, lr}
@@ -27740,7 +27740,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800b6be:	e7c7      	b.n	800b650 <_free_r+0x24>
  800b6c0:	bd38      	pop	{r3, r4, r5, pc}
  800b6c2:	bf00      	nop
- 800b6c4:	20000ce0 	.word	0x20000ce0
+ 800b6c4:	20000cd8 	.word	0x20000cd8
 
 0800b6c8 <_malloc_r>:
  800b6c8:	b570      	push	{r4, r5, r6, lr}
@@ -27819,8 +27819,8 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800b76e:	d0cf      	beq.n	800b710 <_malloc_r+0x48>
  800b770:	6025      	str	r5, [r4, #0]
  800b772:	e7db      	b.n	800b72c <_malloc_r+0x64>
- 800b774:	20000ce0 	.word	0x20000ce0
- 800b778:	20000ce4 	.word	0x20000ce4
+ 800b774:	20000cd8 	.word	0x20000cd8
+ 800b778:	20000cdc 	.word	0x20000cdc
 
 0800b77c <__cvt>:
  800b77c:	e92d 47ff 	stmdb	sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, lr}
@@ -29126,7 +29126,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800c40e:	b103      	cbz	r3, 800c412 <_sbrk_r+0x1a>
  800c410:	602b      	str	r3, [r5, #0]
  800c412:	bd38      	pop	{r3, r4, r5, pc}
- 800c414:	200036c4 	.word	0x200036c4
+ 800c414:	200036bc 	.word	0x200036bc
 
 0800c418 <nanf>:
  800c418:	ed9f 0a01 	vldr	s0, [pc, #4]	; 800c420 <nanf+0x8>
@@ -29159,7 +29159,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800c454:	f85d eb04 	ldr.w	lr, [sp], #4
  800c458:	b003      	add	sp, #12
  800c45a:	4770      	bx	lr
- 800c45c:	20000988 	.word	0x20000988
+ 800c45c:	20000980 	.word	0x20000980
  800c460:	ffff0208 	.word	0xffff0208
 
 0800c464 <strchr>:
@@ -30431,8 +30431,8 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800d0fe:	4623      	moveq	r3, r4
  800d100:	f85d 4b04 	ldr.w	r4, [sp], #4
  800d104:	f7ff ba00 	b.w	800c508 <_strtod_l>
- 800d108:	20000988 	.word	0x20000988
- 800d10c:	200009ec 	.word	0x200009ec
+ 800d108:	20000980 	.word	0x20000980
+ 800d10c:	200009e4 	.word	0x200009e4
 
 0800d110 <_strtol_l.isra.0>:
  800d110:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -30553,8 +30553,8 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800d21e:	b003      	add	sp, #12
  800d220:	bd30      	pop	{r4, r5, pc}
  800d222:	bf00      	nop
- 800d224:	20000988 	.word	0x20000988
- 800d228:	200009ec 	.word	0x200009ec
+ 800d224:	20000980 	.word	0x20000980
+ 800d228:	200009e4 	.word	0x200009e4
 
 0800d22c <strtol>:
  800d22c:	4b08      	ldr	r3, [pc, #32]	; (800d250 <strtol+0x24>)
@@ -30574,8 +30574,8 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800d24a:	b003      	add	sp, #12
  800d24c:	bd30      	pop	{r4, r5, pc}
  800d24e:	bf00      	nop
- 800d250:	20000988 	.word	0x20000988
- 800d254:	200009ec 	.word	0x200009ec
+ 800d250:	20000980 	.word	0x20000980
+ 800d254:	200009e4 	.word	0x200009e4
 
 0800d258 <quorem>:
  800d258:	e92d 4ff7 	stmdb	sp!, {r0, r1, r2, r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -32464,8 +32464,8 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800e546:	30f0      	adds	r0, #240	; 0xf0
  800e548:	4770      	bx	lr
  800e54a:	bf00      	nop
- 800e54c:	20000988 	.word	0x20000988
- 800e550:	200009ec 	.word	0x200009ec
+ 800e54c:	20000980 	.word	0x20000980
+ 800e550:	200009e4 	.word	0x200009e4
 
 0800e554 <__ascii_mbtowc>:
  800e554:	b082      	sub	sp, #8
@@ -33925,7 +33925,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800f3a4:	40862e42 	.word	0x40862e42
  800f3a8:	d52d3051 	.word	0xd52d3051
  800f3ac:	c0874910 	.word	0xc0874910
- 800f3b0:	20000b58 	.word	0x20000b58
+ 800f3b0:	20000b50 	.word	0x20000b50
  800f3b4:	08012136 	.word	0x08012136
  800f3b8:	47efffff 	.word	0x47efffff
  800f3bc:	7ff00000 	.word	0x7ff00000
@@ -33992,7 +33992,7 @@ void TM_SPI6_INT_InitPins(TM_SPI_PinsPack_t pinspack) {
  800f46e:	2322      	movs	r3, #34	; 0x22
  800f470:	6003      	str	r3, [r0, #0]
  800f472:	e7e2      	b.n	800f43a <hypotf+0x7a>
- 800f474:	20000b58 	.word	0x20000b58
+ 800f474:	20000b50 	.word	0x20000b50
  800f478:	0801213a 	.word	0x0801213a
  800f47c:	47efffff 	.word	0x47efffff
  800f480:	7ff00000 	.word	0x7ff00000
