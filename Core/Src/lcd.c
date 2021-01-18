@@ -49,7 +49,7 @@ void StartScreen(void){
 			TM_LCD_DrawPixel(160, i, LCD_COLOR_BLACK);
 		}
 	char yaxis[] = "0.15 V/div";
-	TM_LCD_SetXY(210,TM_LCD_GetHeight()*3/4+5);
+	TM_LCD_SetXY(240,TM_LCD_GetHeight()*3/4+5);
 	TM_LCD_Puts(&yaxis[0]);
 }
 

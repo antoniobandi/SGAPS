@@ -5373,7 +5373,7 @@ void StartScreen(void){
  8003172:	3302      	adds	r3, #2
  8003174:	0c12      	lsrs	r2, r2, #16
  8003176:	701a      	strb	r2, [r3, #0]
-	TM_LCD_SetXY(210,TM_LCD_GetHeight()*3/4+5);
+	TM_LCD_SetXY(240,TM_LCD_GetHeight()*3/4+5);
  8003178:	f007 fafe 	bl	800a778 <TM_LCD_GetHeight>
  800317c:	4603      	mov	r3, r0
  800317e:	461a      	mov	r2, r3
@@ -5388,7 +5388,7 @@ void StartScreen(void){
  8003190:	3305      	adds	r3, #5
  8003192:	b29b      	uxth	r3, r3
  8003194:	4619      	mov	r1, r3
- 8003196:	20d2      	movs	r0, #210	; 0xd2
+ 8003196:	20f0      	movs	r0, #240	; 0xf0
  8003198:	f007 f986 	bl	800a4a8 <TM_LCD_SetXY>
 	TM_LCD_Puts(&yaxis[0]);
  800319c:	463b      	mov	r3, r7
