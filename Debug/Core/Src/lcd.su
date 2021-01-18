@@ -6,5 +6,6 @@ lcd.c:125:6:SendToScreen	32	static
 lcd.c:137:6:SetSquareOutput	240	static
 lcd.c:172:6:SetSineOutput	240	static
 lcd.c:208:6:ShowSignal	32	static
-lcd.c:232:6:STS	48	static
-lcd.c:270:6:Window	24	static
+lcd.c:232:6:ChangeTitle	24	static
+lcd.c:247:6:STS	48	static
+lcd.c:285:6:Window	24	static

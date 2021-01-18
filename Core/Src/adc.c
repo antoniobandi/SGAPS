@@ -118,6 +118,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 					spectrum_int[k] = (int) cabsf(vector[k]);
 				}
 				STS(spectrum_int);
+				ChangeTitle("FILTERED SIG.SPECTRUM");
 			} else {
 				int spectrum_int[BUFFER_SIZE];
 				float complex vector[BUFFER_SIZE];
@@ -129,12 +130,15 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 					spectrum_int[k] = (int) cabsf(vector[k]);
 				}
 				STS(spectrum_int);
+				ChangeTitle("SIGNAL SPECTRUM");
 			}
 		} else {
 			if(filtered){
 				STS(filteredArray_int);
+				ChangeTitle("FILTERED SIGNAL");
 			} else {
 				STS(arrayInt);
+				ChangeTitle("SIGNAL");
 			}
 		}
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 0);

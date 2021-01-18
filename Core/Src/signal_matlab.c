@@ -9,8 +9,8 @@
 
 bool gen = GEN_S;
 bool sinewave = false;
-bool signal_q = true;
-bool filtered = false;
+bool signal_q = false;
+bool filtered = true;
 bool lowpass = false;
 long int amplitude_temp = AMP_TEMP;
 float amplitude = 2;

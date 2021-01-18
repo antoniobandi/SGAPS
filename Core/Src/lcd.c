@@ -229,6 +229,21 @@ void ShowSignal(int* signal, char title[]){
 	SendToScreen(signal);
 }
 
+void ChangeTitle(char title[]){
+	for(int i=1; i<150;i++){
+			for(int j=183;j<205;j++){
+
+					TM_LCD_DrawPixel(i, j, LCD_COLOR_WHITE);
+
+			}
+		}
+
+	TM_LCD_SetFont(&TM_Font_11x18);
+	TM_LCD_SetXY(1,240*3/4+5);
+	TM_LCD_Puts(&title[0]);
+	TM_LCD_SetFont(&TM_Font_7x10);
+}
+
 void STS (int* signal){
 	int factor;
 	int k = 0;
