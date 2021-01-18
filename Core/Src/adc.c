@@ -61,9 +61,15 @@ void cutOffSetup() {
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 
+	HAL_ADC_Stop_DMA(&hadc3);
+
+	ADC_ChannelConfTypeDef sConfig = {0};
+	sConfig.Channel = ADC_CHANNEL_4;
+	sConfig.Rank = 1;
+
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 1);
 	for(int i = 0; i < BUFFER_SIZE; ++i) {
-				array[i] = -amplitude + (float)buffer[i]/FS_INT * 2;
+				array[i] = -amplitude/2 + (float)buffer[i]/FS_INT *(amplitude/2 + 1);
 				arrayInt[i] = buffer[i];
 			}
 
@@ -96,41 +102,42 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 				filteredArray_int[i] = filteredArray[i] * FS_INT_HALF + FS_INT_HALF;
 				arrayFormer[i] = array[i];
 			}
-			for(int i = 0; )
 
-//		if(!signal_q) {
-//
-//			if(filtered){
-//				int spectrum_int[BUFFER_SIZE];
-//				float complex vector[BUFFER_SIZE];
-//				for (int k = 0; k < BUFFER_SIZE; k++){
-//					vector[k] = (float) filteredArray_int[k];
-//				}
-//				fft(vector, BUFFER_SIZE);
-//				for (int k = 0; k < BUFFER_SIZE; k++){
-//					spectrum_int[k] = (int) cabsf(vector[k]);
-//				}
-//				ShowSignal(spectrum_int, "SPECTRUM");
-//			} else {
-//				int spectrum_int[BUFFER_SIZE];
-//				float complex vector[BUFFER_SIZE];
-//				for (int k = 0; k < BUFFER_SIZE; k++){
-//					vector[k] = (float) arrayInt[k];
-//				}
-//				fft(vector, BUFFER_SIZE);
-//				for (int k = 0; k < BUFFER_SIZE; k++){
-//					spectrum_int[k] = (int) cabsf(vector[k]);
-//				}
-//				ShowSignal(spectrum_int, "SPECTRUM");
-//			}
-//		} else {
-//			if(filtered){
-//				ShowSignal(filteredArray_int, "SIGNAL");
-//			} else {
-//				ShowSignal(arrayInt, "SIGNAL");
-//			}
-//		}
+		if(!signal_q) {
+
+			if(filtered){
+				int spectrum_int[BUFFER_SIZE];
+				float complex vector[BUFFER_SIZE];
+				for (int k = 0; k < BUFFER_SIZE; k++){
+					vector[k] = (float) filteredArray_int[k];
+				}
+				fft(vector, BUFFER_SIZE);
+				for (int k = 0; k < BUFFER_SIZE; k++){
+					spectrum_int[k] = (int) cabsf(vector[k]);
+				}
+				STS(spectrum_int, "SPECTRUM");
+			} else {
+				int spectrum_int[BUFFER_SIZE];
+				float complex vector[BUFFER_SIZE];
+				for (int k = 0; k < BUFFER_SIZE; k++){
+					vector[k] = (float) arrayInt[k];
+				}
+				fft(vector, BUFFER_SIZE);
+				for (int k = 0; k < BUFFER_SIZE; k++){
+					spectrum_int[k] = (int) cabsf(vector[k]);
+				}
+				STS(spectrum_int, "SPECTRUM");
+			}
+		} else {
+			if(filtered){
+				STS(filteredArray_int);
+			} else {
+				STS(arrayInt);
+			}
+		}
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 0);
+
+		HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE);
 
 
 }

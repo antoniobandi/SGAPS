@@ -105,12 +105,6 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-  int a[A_SIZE];
-  int a_filtered[a_SIZE];
-  int HEAD = 0;
-  int TAIL= 0;
-  int HEAD_filtered=0;
-  int TAIL_filtered=0;
   start_timer();
   if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
     {
@@ -118,6 +112,9 @@ int main(void)
       Error_Handler();
     }
 
+  for(int i = 0; i < BUFFER_SIZE; i++){
+	  arrayFormer[i] = 0;
+  }
 
 
   /* USER CODE END 2 */
@@ -129,8 +126,8 @@ int main(void)
 
 
 	  generate();
-//	  matlab();
-//	  cutOffSetup();
+	  matlab();
+	  cutOffSetup();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -180,7 +177,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV8;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {

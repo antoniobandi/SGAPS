@@ -48,7 +48,8 @@ Core/Src/lcd.o: ../Core/Src/lcd.c ../Core/Inc/lcd.h ../Core/Inc/main.h \
  /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_sdram.h \
  /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/attributes.h \
  /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_fonts.h \
- /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_dma2d_graphic.h
+ /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_dma2d_graphic.h \
+ ../Core/Inc/signal_matlab.h
 
 ../Core/Inc/lcd.h:
 
@@ -153,3 +154,5 @@ Core/Src/lcd.o: ../Core/Src/lcd.c ../Core/Inc/lcd.h ../Core/Inc/main.h \
 /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_fonts.h:
 
 /home/tonci/STM32CubeIDE/workspace_1.5.2/Digital_Oscilloscope/Drivers/STM32_LIBRARIES/tm_stm32_dma2d_graphic.h:
+
+../Core/Inc/signal_matlab.h:

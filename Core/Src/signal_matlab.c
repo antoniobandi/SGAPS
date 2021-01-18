@@ -8,14 +8,14 @@
 #include <complex.h>
 
 bool gen = GEN_S;
-bool sinewave = SINE_S;
-bool signal_q = SIG_S;
-bool filtered = FIL_S;
+bool sinewave = true;
+bool signal_q = true;
+bool filtered = false;
 bool lowpass = LOWPASS_S;
 long int amplitude_temp = AMP_TEMP;
-float amplitude = AMP_S;
-long int frequency = FREQ_S;
-double cutOffFreq = FGFREQ_S;
+float amplitude = 2;
+long int frequency = 100;
+double cutOffFreq = 0.1;
 
 char c;
 char *ptr;

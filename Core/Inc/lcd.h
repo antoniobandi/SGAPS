@@ -15,6 +15,7 @@ void LCDFunctionGeneratorOFF(void);
 void SetSquareOutput(long int freq);
 void SetSineOutput(long int freq);
 void SendToScreen(int *signal);
+void STS(int* signal);
 void ShowSignal(int* signal, char title[]);
 void Window(void);
 

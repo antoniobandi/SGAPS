@@ -2,8 +2,10 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "signal_matlab.h"
 
 int width;
+int counter;
 
 
 void StartScreen(void){
@@ -227,6 +229,44 @@ void ShowSignal(int* signal, char title[]){
 	SendToScreen(signal);
 }
 
+void STS (int* signal){
+	int factor;
+	int k = 0;
+	int last_amp = 0;
+	int inter_amp;
+	if (frequency <= 100 ) factor = 1;
+	else if (frequency > 100 && frequency <= 300 ) factor = 2;
+	else if (frequency > 300 && frequency <= 500 ) factor = 3;
+	else if (frequency > 500 && frequency <= 800 ) factor = 4;
+	else factor = 5;
+
+	for(int i = 1; i < BUFFER_SIZE/factor - 1; i++){
+		int amplitude = -0.0417582 * signal[i] + 171;
+		TM_LCD_DrawPixel(/*width*/ factor*i, amplitude, LCD_COLOR_YELLOW);
+
+		if (i > 1) {
+			for(k = factor*(i-1) + 1; k < factor*i; k++) {
+				inter_amp = (amplitude - last_amp)*(k - factor*(i-1) )/factor + last_amp;
+				TM_LCD_DrawPixel(/*width*/ k, inter_amp, LCD_COLOR_YELLOW);
+			}
+		}
+		last_amp = amplitude;
+	}
+	HAL_Delay(300);
+	Window();
+//		for(int i = 1; i < BUFFER_SIZE/(factor*10) - 1; i++){
+//			int amplitude = -0.0417582 * signal[i] + 171;
+//			TM_LCD_DrawPixel(/*width*/ counter*31 + factor*i, amplitude, LCD_COLOR_YELLOW);
+//			if (counter == 9) {
+//				counter = 0;
+//				Window();
+//			}
+//		}
+//		HAL_Delay(300);
+//		counter++;
+
+}
+
 void Window(void){
 
 	for(int i=1; i<319;i++){
@@ -239,7 +279,7 @@ void Window(void){
 
 		for(int i=1; i<319;i++){
 			for(int j=1;j<TM_LCD_GetHeight()*3/4;j++){
-				if(j==91){
+				if(j==171){
 					if(i%3==0){
 						TM_LCD_DrawPixel(i, j, LCD_COLOR_WHITE);
 					}
