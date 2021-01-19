@@ -12,12 +12,12 @@ bool gen = GEN_S;
 bool sinewave = true;
 bool signal_q = true;
 bool filtered = false;
-bool lowpass = false;
+bool lowpass = true;
 long int amplitude_temp = AMP_TEMP;
-float amplitude = 2;
-long int frequency = 50;
+float amplitude = 3;
+long int frequency = 500;
 double cutOffFreq = 0.2;
-long int freq_scale = 8;
+long int freq_scale = 4 ;
 
 char c;
 char *ptr;

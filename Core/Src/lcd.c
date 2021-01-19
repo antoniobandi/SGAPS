@@ -48,8 +48,8 @@ void StartScreen(void){
 	for(int i=TM_LCD_GetHeight()-22; i<TM_LCD_GetHeight()-5;i++){
 			TM_LCD_DrawPixel(160, i, LCD_COLOR_BLACK);
 		}
-	char yaxis[] = "0.15 V/div";
-	TM_LCD_SetXY(240,TM_LCD_GetHeight()*3/4+5);
+	char yaxis[] = "0.17 V/div";
+	TM_LCD_SetXY(235,TM_LCD_GetHeight()*3/4+20);
 	TM_LCD_Puts(&yaxis[0]);
 }
 
@@ -122,19 +122,6 @@ void LCDFunctionGeneratorOFF(void){
 	TM_LCD_Puts(&gasi[0]);
 }
 
-void SendToScreen(int* signal){
-	for(int i=0;i<BUFFER_SIZE;i++){
-		int amplitude = -0.04297924298 * signal[i] + 171;
-		TM_LCD_DrawPixel(width%318, amplitude, LCD_COLOR_YELLOW);
-		if(width%318==0){
-			HAL_Delay(300);
-			Window();
-
-		}
-		width++;
-	}
-}
-
 void SetSquareOutput(long int freq){
 	LCDFunctionGeneratorON();
 	double sinus[20];
@@ -158,7 +145,7 @@ void SetSquareOutput(long int freq){
 	}
 	char f[10] = {0};
 	sprintf(f,"%.ld",freq);
-	for(int i=165;i<320;i++){
+	for(int i=165;i<290;i++){
 		for(int j=TM_LCD_GetHeight()-18;j<TM_LCD_GetHeight();j++){
 			TM_LCD_DrawPixel(i, j, LCD_COLOR_WHITE);
 		}
@@ -195,7 +182,7 @@ void SetSineOutput(long int freq){
 	}
 	char f[10] = {0};
 	sprintf(f,"%.ld",freq);
-	for(int i=165;i<320;i++){
+	for(int i=165;i<290;i++){
 			for(int j=TM_LCD_GetHeight()-18;j<TM_LCD_GetHeight();j++){
 				TM_LCD_DrawPixel(i, j, LCD_COLOR_WHITE);
 			}
@@ -204,30 +191,6 @@ void SetSineOutput(long int freq){
 	TM_LCD_Puts(&f[0]);
 	char f1[] = " Hz";
 	TM_LCD_Puts(&f1[0]);
-}
-
-void ShowSignal(int* signal, char title[]){
-	for(int i=1; i<319;i++){
-		for(int j=1;j<TM_LCD_GetHeight()*3/4;j++){
-			if(TM_LCD_GetPixel(i, j) == LCD_COLOR_YELLOW){
-				TM_LCD_DrawPixel(i, j, LCD_COLOR_BLACK);
-			}
-		}
-	}
-	for(int i=1; i<110;i++){
-			for(int j=185;j<205;j++){
-
-					TM_LCD_DrawPixel(i, j, LCD_COLOR_WHITE);
-
-			}
-		}
-
-
-	TM_LCD_SetFont(&TM_Font_11x18);
-	TM_LCD_SetXY(1,240*3/4+5);
-	TM_LCD_Puts(&title[0]);
-	TM_LCD_SetFont(&TM_Font_7x10);
-	SendToScreen(signal);
 }
 
 void ChangeTitle(char title[]){
@@ -245,16 +208,19 @@ void ChangeTitle(char title[]){
 	TM_LCD_SetFont(&TM_Font_7x10);
 }
 
-void STS (int* signal){
+void SendToScreen(int* signal){
 	HAL_Delay(300);
 	Window();
 	for(int i = 0; i < BUFFER_SIZE; i++){
-		int amplitude = -0.0417582 * signal[i] + 171;
-		TM_LCD_DrawPixel(/*width*/ i, amplitude, LCD_COLOR_YELLOW);
+		int amplitude = -0.0395604 * signal[i] + 172;
+		if((i!=0) && (i!=319)){
+			TM_LCD_DrawPixel(i, amplitude, LCD_COLOR_YELLOW);
+		}
 	}
 }
 
 void Window(void){
+
 
 	for(int i=1; i<319;i++){
 			for(int j=1;j<182;j++){
@@ -274,4 +240,66 @@ void Window(void){
 				if((i%16==0)&&(j%9==0))	TM_LCD_DrawPixel(i, j, LCD_COLOR_WHITE);
 			}
 		}
+}
+
+void SetScreenTime(int mode){
+	TM_LCD_SetXY(235,TM_LCD_GetHeight()*3/4+5);
+	double t, k;
+	char time[10] = {0};
+	char unit[] = "ms/div";
+
+	switch(mode){
+	case 1:
+		k = 3;
+		break;
+
+	case 2:
+		k = 15;
+		break;
+
+	case 3:
+		k = 28;
+		break;
+
+	case 4:
+		k = 56;
+		break;
+
+	case 5:
+		k = 84;
+		break;
+
+	case 6:
+		k = 112;
+		break;
+
+	case 7:
+		k = 144;
+		break;
+
+	case 8:
+		k = 480;
+		break;
+	}
+	t = 0.0075*k;
+	sprintf(time,"%.3f",t);
+	TM_LCD_Puts(&time[0]);
+	TM_LCD_Puts(&unit[0]);
+
+}
+
+void SetFilter(int pass){
+	char h[] = "HP";
+	char l[] = "LP";
+	TM_LCD_SetXY(291,TM_LCD_GetHeight()*3/4+40);
+	TM_LCD_SetFont(&TM_Font_11x18);
+	TM_LCD_Puts("  ");
+	TM_LCD_SetXY(291,TM_LCD_GetHeight()*3/4+40);
+	if(pass == 1){
+		TM_LCD_Puts(&h[0]);
+	}else{
+		TM_LCD_Puts(&l[0]);
+	}
+	TM_LCD_SetFont(&TM_Font_7x10);
+
 }

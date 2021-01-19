@@ -106,6 +106,7 @@ int main(void)
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   int stanje = 0;
+  int stanjeFiltra = 2;
   start_timer();
   if(HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&buffer, BUFFER_SIZE) != HAL_OK)
     {
@@ -125,7 +126,7 @@ int main(void)
   while (1)
   {
 
-	  adjust(&stanje);
+	  adjust(&stanje, &stanjeFiltra);
 
     /* USER CODE END WHILE */
 
@@ -176,7 +177,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV8;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
@@ -193,7 +194,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void adjust(int* stanje){
+void adjust(int* stanje, int* stanjeFiltra){
 	if(!signal_q) {
 		if(filtered){
 			if(*stanje != 1){
@@ -219,7 +220,18 @@ void adjust(int* stanje){
 			}
 		}
 	}
-//	matlab();
+	if(lowpass){
+		if(*stanjeFiltra != 0){
+			SetFilter(0);
+			*stanjeFiltra = 0;
+		}
+	}else{
+		if(*stanjeFiltra != 1){
+			SetFilter(1);
+			*stanjeFiltra = 1;
+		}
+	}
+
 	generate();
 	cutOffSetup();
 }

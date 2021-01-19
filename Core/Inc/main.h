@@ -55,7 +55,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-void adjust(int* stanje);
+void adjust(int* stanje, int* stanjeFiltra);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

@@ -122,7 +122,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 					v++;
 				}
 				for (int k = 288; k < 320; k++) spectrum_int[k] = 0;
-				STS(spectrum_int);
+				SendToScreen(spectrum_int);
 
 			} else {
 				int v = 0;
@@ -139,15 +139,15 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 					v++;
 				}
 				for (int k = 288; k < 320; k++) spectrum_int[k] = 0;
-				STS(spectrum_int);
+				SendToScreen(spectrum_int);
 
 			}
 		} else {
 			if(filtered){
-				STS(filteredArray_int);
+				SendToScreen(filteredArray_int);
 
 			} else {
-				STS(arrayInt);
+				SendToScreen(arrayInt);
 
 			}
 		}
@@ -158,38 +158,47 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 
 		case 1:
 			sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+			SetScreenTime(1);
 			break;
 
 		case 2:
 			sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+			SetScreenTime(2);
 			break;
 
 		case 3:
 			sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+			SetScreenTime(3);
 			break;
 
 		case 4:
 			sConfig.SamplingTime = ADC_SAMPLETIME_56CYCLES;
+			SetScreenTime(4);
 			break;
 
 		case 5:
 			sConfig.SamplingTime = ADC_SAMPLETIME_84CYCLES;
+			SetScreenTime(5);
 			break;
 
 		case 6:
 			sConfig.SamplingTime = ADC_SAMPLETIME_112CYCLES;
+			SetScreenTime(6);
 			break;
 
 		case 7:
 			sConfig.SamplingTime = ADC_SAMPLETIME_144CYCLES;
+			SetScreenTime(7);
 			break;
 
 		case 8:
 			sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+			SetScreenTime(8);
 			break;
 
 		default:
 			sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+			SetScreenTime(8);
 			break;
 	}
 
@@ -249,12 +258,6 @@ void MX_ADC3_Init(void)
   {
     Error_Handler();
   }
-
-  /* USER CODE BEGIN ADC3_Init 1 */
-  for(int i = 0; i < BUFFER_SIZE; ++i){
-	  arrayFormer[i] = array[i];
-  }
-   /* USER CODE END ADC3_Init 1 */
 
 }
 
