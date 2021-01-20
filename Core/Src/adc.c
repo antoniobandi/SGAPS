@@ -69,8 +69,19 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 	sConfig.Rank = 1;
 
 //	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, 1);
+
+	int max = 0;
+	float amp = 0;
+
+	for(int i = 0; i < BUFFER_SIZE; ++i){
+		if(array[i] >= max)
+			max = array[i];
+	}
+
+	amp = max / 4095 * 3.;
+
 	for(int i = 0; i < BUFFER_SIZE; ++i) {
-				array[i] = -amplitude/2 + (float)buffer[i]/FS_INT *(amplitude/2 + 1);
+				array[i] = -amp/2 + (float)buffer[i]/FS_INT *(amp/2 + 1);
 				arrayInt[i] = buffer[i];
 			}
 
