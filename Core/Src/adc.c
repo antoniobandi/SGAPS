@@ -76,9 +76,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 
 	float sum = 0;
 
-	if(lowpass) {										//!lowpass= 1 -> HP
+	if(lowpass) {											//lowpass= 1 -> LP
 		for(int n = 0; n < BUFFER_SIZE; ++n) {
-			for(int k = 0; k < FILTER_ORDER; ++k) {
+			for(int k = 0; k <= FILTER_ORDER; ++k) {
 				if(n - k >= 0)
 					sum += firCoef_LP[k] * array[n-k];
 				else
@@ -87,9 +87,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 			filteredArray[n] = sum;
 			sum = 0;
 		}
-	} else {											//!lowpass = 0 -> LP
-		for(int n = 0; n < BUFFER_SIZE; ++n) {			//L = BUFFER_SIZE
-			for(int k = 0; k < FILTER_ORDER; ++k) {	//N = L - 1 = BUFFER_SIZE - 1
+	} else {											//!lowpass = 0 -> HP
+		for(int n = 0; n < BUFFER_SIZE; ++n) {
+			for(int k = 0; k <= FILTER_ORDER; ++k) {
 				if(n - k >= 0)
 					sum += firCoef_HP[k] * array[n-k];
 				else
